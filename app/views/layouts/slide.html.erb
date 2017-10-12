@@ -3,57 +3,57 @@
   <head>
     <title>SeconLife</title>
     <%= csrf_meta_tags %> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://blackrockdigital.github.io/startbootstrap-scrolling-nav/vendor/bootstrap/css/bootstrap.min.css">
 
   <style>
-
-  .carousel-item {
-      height: 55vh;
-      min-height: 200px;
-      background: no-repeat center center scroll;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
+.carousel-item {
+    height: 60vh;
+    min-height: 250px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   }
   
   .portfolio-item {
-      margin-bottom: 30px;
+    margin-bottom: 30px;
   }
+  </style>
   </style>
   </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <%= link_to '貳拍' , root_url, class: "navbar-brand"%>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item"> <a class="nav-link" herf="#"></a></li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="請輸入商品關鍵字" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button>
-    </form>
-    <ul class="navbar-nav nav-bar-right">
-      <% if current_user %>
-        <li><%= link_to '我的帳號', users_path, class: "nav-link"%></li>
-        <li><%= link_to '登出', destroy_user_session_path, :method => :delete, class: "nav-link" %></li>
-        
-      <% else %>
-        <li><%= link_to '註冊', new_registration_path(:user), class: "nav-link" %></li>
-        <li><%= link_to '登入', new_session_path(:user), class: "nav-link" %></li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+          <%= link_to '貳拍' , root_url, class: "navbar-brand js-scroll-trigger"%>          
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                    <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="text" placeholder="請輸入商品關鍵字" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button>
+                    </form>
+              <% if current_user %>
+                <li><%= link_to '我的帳號', users_path, class: "nav-link js-scroll-trigger"%></li>
+                <li><%= link_to '登出', destroy_user_session_path, :method => :delete, class: "nav-link js-scroll-trigger" %></li>
+                
+              <% else %>
+                <li><%= link_to '註冊', new_registration_path(:user), class: "nav-link js-scroll-trigger" %></li>
+                <li><%= link_to '登入', new_session_path(:user), class: "nav-link js-scroll-trigger" %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
 
     <%if flash[:notice].present?%>
@@ -70,10 +70,9 @@
 
       <%= yield %>
 
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="https://blackrockdigital.github.io/startbootstrap-scrolling-nav/vendor/jquery/jquery.min.js"></script>
+    <script src="https://blackrockdigital.github.io/startbootstrap-scrolling-nav/vendor/popper/popper.min.js"></script>
+    <script src="https://blackrockdigital.github.io/startbootstrap-scrolling-nav/vendor/bootstrap/js/bootstrap.min.js"></script>
   
   </body>
 </html>
