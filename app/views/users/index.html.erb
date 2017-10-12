@@ -17,11 +17,12 @@
 
 
 <% if current_user.has_role?(:sale) == true %>
-<h1>我的商品</h1>
+<h1 style="display:inline">我的商品</h1>
+<%= link_to '新增商品', new_item_path, class: "btn btn-success btn-sm",  style: "float:right" %>	
 <hr>
 <div class="row">
 <% @current_user.item.each do |item| %>
-  <div class="col-sm-3">
+<div class="col-lg-3 col-sm-3" style="padding-bottom:20px;">
 	<div class="card">
   		<div class="card-body">
     	<h4 class="card-title"><%= item.name %></h4>
