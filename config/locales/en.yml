@@ -31,3 +31,10 @@
 
 en:
   hello: "Hello world"
+  unauthorized:
+    default: "Default error message text."
+    manage:
+      all: "您並無權限使用 %{action} %{subject}."
+      user: "Not allowed to manage other user accounts."
+    update:
+      project: "你無法更新此商品"

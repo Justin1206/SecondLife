@@ -1,0 +1,39 @@
+<div class="container" style="padding-top:30px;">
+<h1>我的帳戶</h1>
+<hr>
+<div class="row">
+	<div class="col-sm-12">
+		<div class="card">
+  		<div class="card-body">
+    	<h4 class="card-title"><%= current_user.email %></h4>
+        <a>我的評價</a><br>
+        <%= link_to '修改密碼', edit_registration_path(:user) %>
+  		</div>
+		</div>
+  </div>
+</div>
+
+<br><br>
+
+
+<% if current_user.has_role?(:sale) == true %>
+<h1>我的商品</h1>
+<hr>
+<div class="row">
+<% @current_user.item.each do |item| %>
+  <div class="col-sm-3">
+	<div class="card">
+  		<div class="card-body">
+    	<h4 class="card-title"><%= item.name %></h4>
+    	<img class="card-img-top" src="..." alt="Card image cap"><br>
+      <%= item.price %><a>元</a><br>
+      <%= link_to '修改', edit_item_url(item) , class: "btn btn-primary btn-sm" %>
+  		</div>
+	</div>
+  </div>
+<% end %>
+</div>
+<% else %>
+<%= button_to '我要當賣家', usertosale_users_path, class: "btn btn-primary btn-lg", method: :post %>
+<% end %>
+</div>

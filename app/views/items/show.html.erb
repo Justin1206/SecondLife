@@ -1,39 +1,41 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>商品名稱：</strong>
   <%= @item.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>商品描述：</strong>
   <%= @item.description %>
 </p>
 
 <p>
-  <strong>Status:</strong>
+  <strong>狀態：</strong>
   <%= @item.status %>
 </p>
 
 <p>
-  <strong>Amount:</strong>
+  <strong>數量：</strong>
   <%= @item.amount %>
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong>價格：</strong>
   <%= @item.price %>
+  <strong>元</strong>
 </p>
 
 <p>
-  <strong>Picture:</strong>
-  <%= @item.picture %>
-</p>
-
-<p>
-  <strong>Category:</strong>
+  <strong>分類：</strong>
   <%= @item.category %>
 </p>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<p>
+  <strong>圖片：</strong>
+  <%= @item.picture %>
+</p>
+
+
+<%= link_to '修改', edit_item_path(@item) %> |
+<%= link_to '返回', items_path %>
