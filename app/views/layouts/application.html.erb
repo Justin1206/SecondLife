@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SeconLife</title>
+    <title>SecondLife</title>
     <%= csrf_meta_tags %> 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'false' %>
     <link rel="stylesheet" href="https://blackrockdigital.github.io/startbootstrap-scrolling-nav/vendor/bootstrap/css/bootstrap.min.css">
 
   <style>
     body{
       padding-top: 55px;
     }
+    
+      .carousel-item {
+          height: 60vh;
+          min-height: 250px;
+          background: no-repeat center center scroll;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+        }
+        
+        .portfolio-item {
+          margin-bottom: 30px;
+        }
   </style>
   </head>
 
@@ -45,23 +59,32 @@
 
 
     <%if flash[:notice].present?%>
-      <div class="alert alert-success text-center" role="notice">
+      <div class="alert alert-success text-center" role="notice" id="myAlert">
            <%= flash[:notice] %>
       </div>
     <%end%>
      
     <%if flash[:alert].present?%>
-      <div class="alert alert-danger text-center" role="alert">
+      <div class="alert alert-danger text-center" role="alert" id="myAlert">
            <%= flash[:alert] %>
       </div>
     <%end%>
+
+
+
+    <% if current_page?(root_path) %>
+      <%= render 'layouts/slide' %>
+    <% elsif current_page?(items_path) %>
+      <%= render 'layouts/slide' %>
+    <% end %>
+    
 
     <div class="container">
       <%= yield %>
     </div>
 
-    <script src="https://blackrockdigital.github.io/startbootstrap-scrolling-nav/vendor/jquery/jquery.min.js"></script>
-    <script src="https://blackrockdigital.github.io/startbootstrap-scrolling-nav/vendor/popper/popper.min.js"></script>
+      <script src="https://blackrockdigital.github.io/startbootstrap-scrolling-nav/vendor/bootstrap/js/jquery.min.js"></script>
+      <script src="https://blackrockdigital.github.io/startbootstrap-scrolling-nav/vendor/popper/popper.min.js"></script>
     <script src="https://blackrockdigital.github.io/startbootstrap-scrolling-nav/vendor/bootstrap/js/bootstrap.min.js"></script>
   
   </body>

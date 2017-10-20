@@ -1,3 +1,13 @@
+<style>
+    .put-it-center{
+        position: relative;
+        margin: 0 auto;
+        width: 400px;
+        padding: 50px;
+    }
+
+</style>
+<div class="put-it-center">
 <h2>註冊</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -11,7 +21,7 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>密碼最少需要六個字元</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
@@ -22,8 +32,9 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "註冊" ,class: "btn btn-primary btn-sm"%>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>

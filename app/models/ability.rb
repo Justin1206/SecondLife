@@ -10,6 +10,9 @@ class Ability
     elsif user.has_role?(:sale)
       can :manage, Item, user_id: user.id
       can :manage, User, user_id: user.id
+      can :read, Item
+      can :favorite, Item
+      can :unfavorite, Item
     else
       member_only
     end
@@ -23,7 +26,9 @@ class Ability
 
   def member_only
     can :read, Item
-    can :manage, User
+    can :favorite, Item
+    can :unfavorite, Item
+    can :manage, User    
   end
 
 end

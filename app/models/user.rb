@@ -6,8 +6,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :item 
 
-
-  has_many :item
-
+  has_many :wlists # just the 'relationships'
+  has_many :favorites, through: :wlists, source: :item
 end

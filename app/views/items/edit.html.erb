@@ -1,6 +1,18 @@
+<style>
+    .put-it-center{
+        position: relative;
+        margin: 0 auto;
+        width: 400px;
+        padding: 50px;
+    }
+
+</style>
+
+<div class="put-it-center">
 <h1>修改商品</h1>
 
 <%= render 'form', item: @item %>
-
+<br>
 <%# <%= link_to '顯示', @item %> 
-<%= link_to '返回', items_path %>
+<%= link_to '返回', items_path ,class: "btn btn-primary btn-sm"%>
+</div>

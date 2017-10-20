@@ -1,5 +1,5 @@
 <div class="container" style="padding-top:30px;">
-<h1>我的帳戶</h1>
+<h3>我的帳戶</h3>
 <hr>
 <div class="row">
 	<div class="col-sm-12">
@@ -15,18 +15,18 @@
 
 <br><br>
 
-
 <% if current_user.has_role?(:sale) == true %>
-<h1 style="display:inline">我的商品</h1>
+<h3 style="display:inline">我的商品</h3>
 <%= link_to '新增商品', new_item_path, class: "btn btn-success btn-sm",  style: "float:right" %>	
 <hr>
+
 <div class="row">
 <% @current_user.item.each do |item| %>
 <div class="col-lg-3 col-sm-3" style="padding-bottom:20px;">
 	<div class="card">
   		<div class="card-body">
     	<h4 class="card-title"><%= item.name %></h4>
-    	<img class="card-img-top" src="..." alt="Card image cap"><br>
+    	<img class="card-img-top" src="<%= item.picture %>" alt="Card image cap"><br>
       <%= item.price %><a>元</a><br>
       <%= link_to '修改', edit_item_url(item) , class: "btn btn-primary btn-sm" %>
   		</div>
@@ -36,5 +36,28 @@
 </div>
 <% else %>
 <%= button_to '我要當賣家', usertosale_users_path, class: "btn btn-primary btn-lg", method: :post %>
+<hr>
 <% end %>
+
+
+<br><br>
+
+<h3>我想買的物品</h3>
+<hr>
+
+<div class="row">
+	<% @current_user.favorites.each do |favorite| %>
+	<div class="col-lg-3 col-sm-3" style="padding-bottom:20px;">
+		<div class="card">
+				<div class="card-body">
+				<h4 class="card-title"><%= favorite.name %></h4>
+				<img class="card-img-top" src="<%= favorite.picture %>" alt="Card image cap"><br>
+				<%= favorite.price %><a>元</a><br>
+				<%= link_to "不要了", favorite_item_path(favorite, type: "unfavorite"), class: "btn btn-success btn-xm", method: :put %>				
+				</div>
+		</div>
+		</div>
+	<% end %>
+	</div>
+
 </div>

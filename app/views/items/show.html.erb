@@ -1,3 +1,13 @@
+<style>
+    .put-it-center{
+        position: relative;
+        margin: 0 auto;
+        width: 400px;
+        padding: 50px;
+    }
+
+</style>
+<div class="put-it-center">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -11,31 +21,33 @@
 </p>
 
 <p>
-  <strong>狀態：</strong>
+  <strong>商品狀態：</strong>
   <%= @item.status %>
 </p>
 
 <p>
-  <strong>數量：</strong>
+  <strong>商品數量：</strong>
   <%= @item.amount %>
 </p>
 
 <p>
-  <strong>價格：</strong>
+  <strong>商品價格：</strong>
   <%= @item.price %>
   <strong>元</strong>
 </p>
 
 <p>
-  <strong>分類：</strong>
+  <strong>商品分類：</strong>
   <%= @item.category %>
 </p>
 
 <p>
-  <strong>圖片：</strong>
-  <%= @item.picture %>
+  <strong>商品圖片：</strong>
+  <img src="<%= @item.picture %>" alt="">
+  
 </p>
 
 
 <!-- <%= link_to '修改', edit_item_path(@item) %> | -->
-<%= link_to '返回', items_path %>
+<%= link_to '返回', items_path, class: "btn btn-primary btn-sm" %>
+</div>

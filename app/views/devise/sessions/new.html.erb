@@ -1,15 +1,23 @@
-<h2>登入</h2>
-
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+<form class="form-horizontal">
+  <fieldset>
+    <legend>登入</legend>
+
+<div class="form-group">
+
+    <%= f.label :信箱, class: "col-lg-2 control-label" %><br />
+    <%= f.email_field :email, autofocus: true, class: "col-lg-10 ; form-control" %>
+
+</div>
+
+<div class="form-group">
+
+    <%= f.label :密碼, class: "col-lg-2 control-label"%><br />
+    <%= f.password_field :password, autocomplete: "off", class: "col-lg-10 ; form-control" %>
+    
+</div>
+
 
   <% if devise_mapping.rememberable? -%>
     <div class="field">
@@ -19,7 +27,7 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "登入" %>
+    <%= f.submit "登入",  class: "btn btn-info" %>
   </div>
 <% end %>
 

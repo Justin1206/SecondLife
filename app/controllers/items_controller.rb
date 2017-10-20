@@ -1,13 +1,23 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  layout 'slide', only: [:index]
   load_and_authorize_resource
 
   # GET /items
   # GET /items.json
-  def index
 
+  def favorite
+    type = params[:type]
+    if type == "favorite"
+        current_user.favorites << @item
+        redirect_to root_path, notice: '加入喜愛清單'        
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@item)
+      redirect_to users_path, notice: '從喜愛清單刪除'
+    end
+  end
+
+  def index
     @items = Item.all
   end
 
