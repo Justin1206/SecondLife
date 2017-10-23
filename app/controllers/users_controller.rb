@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     # GET /users
     # GET /users.json
     def index
-      @users = current_user
+      
     end
   
     #我要當賣家
