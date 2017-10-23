@@ -1,6 +1,165 @@
+<style>
+.main-agileits 
+{
+  padding: 2em 0 0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: url(https://upload.wikimedia.org/wikipedia/commons/7/72/Snow_Scene_at_Shipka_Pass_1.JPG)repeat center 0px;
+  background-attachment: fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover; 
+background-size: cover;
+}
+.mainw3-agileinfo 
+{
+  width: 30%;
+  margin: 3em auto;
+  padding: 2em;
+}
+
+.field-wrap 
+{
+	position: relative;
+	margin-bottom: 40px;
+} 
+
+label.active .req 
+{
+	opacity: 0;
+}
+
+input, textarea {
+  font-size: 1em;
+  display: block;
+  width: 100%;
+  padding: 0.4em 1em 0.4em 0;
+  background: none;
+  background-image: none;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+  color: #fff;
+  border-radius: 0;
+  -webkit-transition: border-color .25s ease, box-shadow .25s ease;
+-moz-transition: border-color .25s ease, box-shadow .25s ease; 
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+input:focus, textarea:focus {
+outline: 0;
+border-color: #FFC107;
+} 
+.form a {
+  text-decoration: none;
+  color: #fff;
+  -webkit-transition: .5s ease;
+  -moz-transition: .5s ease;
+  -o-transition: .5s ease;
+  -ms-transition: .5s ease;
+  transition: .5s ease;
+}
+.form a:hover {
+  color: #05e0e2;
+} 
+.form {
+  background: rgba(0%,0%,0%,0.2);
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px; 
+    border-radius: 20px;
+}
+
+.button {
+  border: 0;
+  outline: none;
+  padding: 1.1em;
+  font-size: 1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  background:#05e0e2;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease;
+-moz-transition: all 0.5s ease;
+-o-transition: all 0.5s ease;
+-ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+  margin-top:2.2em;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px; 
+border-radius: 5px;
+}
+.button:hover, .button:focus {
+  background: #00cacc;
+  letter-spacing: 7px;
+}
+.button-block {
+display: block;
+width: 100%;
+} 
+</style>
+
+
+
+
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
+<div class="main-agileits">
+		<div class="mainw3-agileinfo form">
+			<div id="login">    
+				<form action="#" method="post"> 
+					<div class="field-wrap">
+            <!-- <label> Enter Your Email<span class="req">*</span> </label> -->
+            <%= f.label :信箱, style:"color:#fff" %>
+            <%= f.email_field :email, autofocus: true%>
+            <!-- <input type="email"required autocomplete="off"/> -->
+					</div> 
+					<div class="field-wrap">
+            <!-- <label> Your Password<span class="req">*</span> </label> -->
+            <%= f.label :密碼, style:"color:#fff" %>
+            <%= f.password_field :password, autocomplete: "off" %>
+						<!-- <input type="password"required autocomplete="off"/> -->
+          </div> 
+          <% if devise_mapping.rememberable? -%>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+          <% end -%>
+          <div class="actions">
+              <%= f.submit "登入",  class: "button button-block" %>
+          </div>
+            <% end %>
+            
+            <%= render "devise/shared/links" %>
+
+				</form> 
+			</div>
+         
+		</div>	
+	</div>	
+
+
+
+  <!-- <style>
+      .put-it-center{
+          position: relative;
+          margin: 0 auto;
+          width: 600px;
+          padding: 50px;
+      }
+  
+  </style>
+  
+ -->
+
+
+<!-- 
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="put-it-center">
 <form class="form-horizontal">
+    
   <fieldset>
     <legend>登入</legend>
 
@@ -15,7 +174,7 @@
 
     <%= f.label :密碼, class: "col-lg-2 control-label"%><br />
     <%= f.password_field :password, autocomplete: "off", class: "col-lg-10 ; form-control" %>
-    
+
 </div>
 
 
@@ -32,3 +191,7 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</fieldset>
+
+</form>
+</div> -->
