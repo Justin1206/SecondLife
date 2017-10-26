@@ -9,12 +9,17 @@ class ItemsController < ApplicationController
   def favorite
     type = params[:type]
     if type == "favorite"
-        current_user.favorites << @item
-        redirect_to root_path, notice: '加入喜愛清單'        
-    elsif type == "unfavorite"
-      current_user.favorites.delete(@item)
-      redirect_to users_path, notice: '從喜愛清單刪除'
-    end
+        if 
+          current_user.favorites.include?(@item)
+          redirect_back(fallback_location: root_path, alert: '重複添加商品')       
+        else
+          current_user.favorites << @item
+          redirect_back(fallback_location: root_path, notice: '加入喜愛清單')
+        end
+        elsif type == "unfavorite"
+          current_user.favorites.delete(@item)
+          redirect_back(fallback_location: root_path, notice: '從喜愛清單刪除')   
+        end
   end
 
   def index

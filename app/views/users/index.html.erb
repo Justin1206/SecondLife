@@ -26,7 +26,7 @@
 	<div class="card">
   		<div class="card-body">
     	<h4 class="card-title"><%= item.name %></h4>
-    	<img class="card-img-top" src="<%= item.picture %>" alt="Card image cap"><br>
+    	<img class="card-img-top" src="<%= item.picture %>" alt="Card image cap" width="150" height="180"><br>
       <%= item.price %><a>元</a><br>
       <%= link_to '修改', edit_item_url(item) , class: "btn btn-primary btn-sm" %>
   		</div>
@@ -39,6 +39,8 @@
 <hr>
 <% end %>
 
+<a href="#" id="loadMore">Load More</a>
+<a href="#" id="loadLess">Load Less</a>
 
 <br><br>
 
@@ -61,3 +63,36 @@
 	</div>
 
 </div>
+
+
+<script>
+		$(function() {			
+			$(".col-sm-3").slice(0, 4).show();
+			$("#loadMore").on('click', function(e) {
+			  e.preventDefault();
+			  $(".col-sm-3:hidden").slice(0, 4).slideDown();
+			  if ($(".col-sm-3:hidden").length == 0) {
+				$("#loadLess").fadeIn('slow');
+				$("#loadMore").hide();
+				// $("#loadMore").text('Load only the first 4');
+			  }
+//			   $('html,body').animate({
+//				scrollTop: $(this).offset().top
+//			  }, 1500);
+			});
+		  
+			$("#loadLess").on('click', function(e) {
+			  e.preventDefault();
+			  $('.col-sm-3:not(:lt(4))').fadeOut();
+			  $("#loadMore").fadeIn('slow');
+			  $("#loadLess").hide();
+		  
+			  desiredHeight = $(window).height();
+		  
+			  $('html,body').animate({
+				scrollTop: $(this).offset().top + desiredHeight
+			  }, 1500);
+			});
+		  
+		  });
+</script>

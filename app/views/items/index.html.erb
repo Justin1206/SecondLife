@@ -1,61 +1,33 @@
 <div class="container" style="padding-top:30px;">
-<h1>分類</h1>
-<hr>
-<div class="row">
-<% @items.each do |item| %>
-  <div class="col-lg-3 col-sm-3" style="padding-bottom:20px;">
-	<div class="card">
-  		<div class="card-body">
-    	<h4 class="card-title"><%= item.name %></h4>
-    	<img class="card-img-top" src="<%= item.picture %>" alt="Card image cap"><br>
-      新台幣<%= item.price %><a>元</a><br>
-			<%= link_to '顯示', item, class: "btn btn-primary btn-sm" %>
-				<a class="btn btn-success btn-sm disable">想買</a>
-				<%= link_to "想買",  favorite_item_path(item, type: "favorite"), class: "btn btn-success btn-sm", method: :put %>
-			<!-- <%= link_to '想買', "#", class: "btn btn-success btn-sm" %>			 -->
-  		</div>
-	</div>
-	</div>
-<% end %>
-</div>
-</div>
-
-
-<div class="container" style="padding-top:30px;">
-<h1>近期商品</h1>
-<hr>
-<div class="row">
-<% @items.each do |item| %>
-  <div class="col-lg-3 col-sm-3" style="padding-bottom:20px;">
-	<div class="card">
-  		<div class="card-body">
-    	<h4 class="card-title"><%= item.name %></h4>
-    	<img class="card-img-top" src="<%= item.picture %>" alt="Card image cap"><br>
-      <%= item.price %><a>元</a><br>
-      <%= link_to '顯示', item, class: "btn btn-primary btn-sm" %>
-  		</div>
-	</div>
-  </div>
-<% end %>
-</div>
+	<h1>分類</h1><hr>
+			<div class="row">
+				<% @items.each do |item| %>
+				<div class="col-lg-3 col-md-3 mb-2" style="padding-bottom:20px;">
+					<div class="card h-100">
+						<img class="card-img-top" src="<%= item.picture %>" alt="Card image cap" width="150" height="180">
+						<div class="card-body">
+							<h4 class="card-title"><%= link_to item.name, item, class: "btn btn-primary btn-sm "%></h4>
+							<h5><%= item.price %><a>元</a></h5>
+							<p class="card-text"><%= item.description %></p>
+						</div>
+						<div class="card-footer">
+							<small class="text-muted">
+							<% if current_user.blank? %>
+								<%= link_to '喜歡', new_session_path(:user), class: "btn btn-success btn-sm" %>
+							<% else %>
+							<% if current_user.favorites.include?(item) %>
+								<%= link_to '不喜歡', favorite_item_path(item, type: "unfavorite"), class: "btn btn-danger btn-sm ", method: :put %>
+							<% else %>
+								<%= link_to '想買',  favorite_item_path(item, type: "favorite"), class: "btn btn-success btn-sm ", method: :put %>
+							<% end %>
+							<% end %>
+							</small><br>
+								<small class="text-muted">賣家評價： &#9733; &#9733; &#9733; &#9733; &#9734;</small>
+						</div>
+  			</div>
+			</div>
+			<% end %>
+		</div>
 </div>
 
 
-<div class="container" style="padding-top:30px;">
-<h1>熱門商品</h1>
-<hr>
-<div class="row">
-<% @items.each do |item| %>
-<div class="col-lg-3 col-sm-3" style="padding-bottom:20px;">
-	<div class="card">
-  		<div class="card-body">
-    	<h4 class="card-title"><%= item.name %></h4>
-    	<img class="card-img-top" src="<%= item.picture %>" alt="Card image cap"><br>
-      <%= item.price %><a>元</a><br>
-      <%= link_to '顯示', item, class: "btn btn-primary btn-sm" %>
-  		</div>
-	</div>
-  </div>
-<% end %>
-</div>
-</div>
