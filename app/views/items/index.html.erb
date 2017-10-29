@@ -5,7 +5,7 @@
 							<div class="item">
 								<%= link_to item, :remote => true, data: {toggle: "modal", target: "#myModal"} do %>		
 								<div class="animate-box">
-												<img src="<%= item.picture %>" alt="" width="100%">
+									<img src="<%= item.picture %>" alt="" width="100%">
 								</div>
 								<% end %>
 										<div class="fh5co-desc">
@@ -30,7 +30,6 @@
 
 
 
-
 <!-- Modal -->
-<div class="modal fade hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" focus="true">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	</div> 

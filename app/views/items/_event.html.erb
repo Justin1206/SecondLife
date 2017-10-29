@@ -15,17 +15,23 @@
       <!-- Modal -->
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <div class="modal-header" style="background-color:#34495E; color:#fff">
-              <h5 class="modal-title" id="exampleModalLabel" ><%= @item.name %></h5>
+            <div class="modal-header" style="background-color:#34495E;">
+              <h5 class="modal-title" id="myModalLabel" style="color:#fff" ><%= @item.name%></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-      
-            <div class="modal-body" >
-              <p><b>商品：</b><span class="span2"> <%= @item.name %></span></p>
-              <p><b>分類：</b><span class="span2"> <%= @item.category %></span></p>
-              <p><b>狀態：</b><span class="span2"> <%=  @item.status %></span></p>
+
+            <div class="modal-body" style="background-color:#fff;">
+                    <img src="<%= @item.picture %>" alt="" width="100%">
+              </div>
+            
+            <div class="modal-body">
+              <p style="display:inline"><b>商品：</b><span class="span2"> <%= @item.name %></span></p>
+              &nbsp; &nbsp; &nbsp; &nbsp;
+              <p style="display:inline"><b>分類：</b><span class="span2"> <%= @item.category %></span></p>
+              &nbsp; &nbsp; &nbsp; &nbsp;
+              <p style="display:inline"><b>狀態：</b><span class="span2"> <%=  @item.status %></span></p>
             </div>
       
             <div class="modal-body" style="background-color:#EEEEEE; color:#fff">
@@ -33,7 +39,16 @@
             </div>
       
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">關閉</button>
+              <% if current_user.blank? %>
+                  <%= link_to '喜歡', new_session_path(:user), class: "btn btn-success btn-sm" %>
+                  <% else %>
+                      <% if current_user.favorites.include?(@item) %>
+                        <%= link_to '不喜歡', favorite_item_path(@item, type: "unfavorite"), class: "btn btn-danger btn-sm ", method: :put %>
+                      <% else %>
+                        <%= link_to '想買',  favorite_item_path(@item, type: "favorite"), class: "btn btn-success btn-sm ", method: :put %>
+                      <% end %>
+              <% end %>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">在考慮</button>
             </div>
           </div>
         </div>
