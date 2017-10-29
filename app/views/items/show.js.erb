@@ -1,0 +1,17 @@
+  
+$('#myModal').html("<%= escape_javascript(render :partial => 'event') %>");
+  $('#myModal').modal('show');
+  // $('#myModal').modal({
+  //   focus: true,
+  //   show: true
+  // });
+// ('#myModal').on('show.bs.modal', function () {
+//   $('#myModal').modal({
+//     focus: true,
+//     show: true
+//   })
+//  });
+
+// $('#myModal').on('hidden.bs.modal', function () {
+//    $('#myModal .modal-content').empty();
+//  });

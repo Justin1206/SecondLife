@@ -9,13 +9,13 @@ class ItemsController < ApplicationController
   def favorite
     type = params[:type]
     if type == "favorite"
-        if 
-          current_user.favorites.include?(@item)
-          redirect_back(fallback_location: root_path, alert: '重複添加商品')       
-        else
-          current_user.favorites << @item
-          redirect_back(fallback_location: root_path, notice: '加入喜愛清單')
-        end
+          if 
+            current_user.favorites.include?(@item)
+            redirect_back(fallback_location: root_path, alert: '重複添加商品')       
+          else
+            current_user.favorites << @item
+            redirect_back(fallback_location: root_path, notice: '加入喜愛清單')
+          end
         elsif type == "unfavorite"
           current_user.favorites.delete(@item)
           redirect_back(fallback_location: root_path, notice: '從喜愛清單刪除')   
@@ -23,12 +23,20 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
+    if params[:search]
+      @items = Item.where('name LIKE ? OR  category LIKE ?', "%#{params[:search]}%",  "%#{params[:search]}%")
+    else
+      @items = Item.all
+    end  
   end
 
   # GET /items/1
   # GET /items/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /items/new

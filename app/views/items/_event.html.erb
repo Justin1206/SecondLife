@@ -1,0 +1,39 @@
+<style media="screen">
+        b, strong{
+          font-size: 15px;
+        }
+        span{
+          color: #000;
+        }
+        .span2{
+          color: #000;
+        }
+      </style>
+      
+      <!-- <p id="notice"><%= notice %></p> -->
+      
+      <!-- Modal -->
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color:#34495E; color:#fff">
+              <h5 class="modal-title" id="exampleModalLabel" ><%= @item.name %></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+      
+            <div class="modal-body" >
+              <p><b>商品：</b><span class="span2"> <%= @item.name %></span></p>
+              <p><b>分類：</b><span class="span2"> <%= @item.category %></span></p>
+              <p><b>狀態：</b><span class="span2"> <%=  @item.status %></span></p>
+            </div>
+      
+            <div class="modal-body" style="background-color:#EEEEEE; color:#fff">
+              <h6 style="color: #000;"><strong>商品描述：</strong></h6><p><span><%= @item.description.gsub(/\n/, '<br>').html_safe %></span></p>
+            </div>
+      
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">關閉</button>
+            </div>
+          </div>
+        </div>
