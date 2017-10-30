@@ -12,7 +12,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     
-    <!-- Animate.css -->
+    <!-- Animate.css  -->
     <link rel="stylesheet" href="/css/animate.css">
     <!-- Icomoon Icon Fonts-->
     <link rel="stylesheet" href="/css/icomoon.css">
@@ -23,13 +23,40 @@
     <!-- Theme Style -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- Modernizr JS -->
-    <script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="/js/modernizr-2.6.2.min.js"></script>
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
     <script src="js/respond.min.js"></script>
-    <![endif]-->
+    <![endif]
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"> -->
 
+    <style>
+        .popupunder{
+          width: 300px;
+        position:fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 10;
+        border: 0;
+        padding: 20px;
+      }
+      .popupunder.alert-success{
+          border: 1px solid #8BC34A;
+        background:#AED581;
+        color:#fff;
+      }
+      .popupunder.alert-danger{
+        border: 1px solid #f44336;
+        background:#e57373;
+        color:#fff;
+      }
+      .popupunder .close{
+        font-size: 10px;
+        position:absolute !important;
+        right: 2px;
+        top: 3px;
+      }
+    </style>
   </head>
 
 <body>
@@ -60,34 +87,25 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <a href="#" class="fh5co-menu-btn js-fh5co-menu-btn">選單 <i class="icon-menu"></i></a>
+            <a href="#" class="fh5co-menu-btn js-fh5co-menu-btn"> <i class="icon-menu"></i></a>
             <%= link_to '貳拍' , root_url, class: "navbar-brand"%>
-            <!-- <%= form_tag(items_path, :method => "get", id: "search-form", class:"form-inline my-2 my-lg-2") do %>
-            <%= text_field_tag :search, params[:search], placeholder: "商品  分類",  class: "form-control mr-sm-2"%>
-            <%= submit_tag "搜尋", class: "btn btn-outline-success my-2 my-sm-2" %>
-            <% end %> -->
           </div>
         </div>
       </div>
     </header>
 
-
-    <%if flash[:notice].present?%>
-      <div class="alert alert-success text-center" role="notice" id="myAlert">
-           <%= flash[:notice] %>
-      </div>
-    <%end%>
-     
-    <%if flash[:alert].present?%>
-      <div class="alert alert-danger text-center" role="alert" id="myAlert">
-           <%= flash[:alert] %>
-      </div>
-    <%end%>
-
     
 
     <div id="fh5co-main">
         <div class="container">
+
+          <% if notice %>
+            <div class="popupunder alert alert-success fade in"><button type="button" class="close close-sm" data-dismiss="alert"><i class="glyphicon glyphicon-remove"></i></button><strong>好消息 : </strong><%= notice %></div>            
+          <% end %>
+          <% if alert %>
+            <div class="popupunder alert alert-danger fade in"><button type="button" class="close close-sm" data-dismiss="alert"><i class="glyphicon glyphicon-remove"></i></button><strong>壞消息 : </strong><%= alert %></div>            
+          <% end %>
+
           <%= yield %>
         </div>
     </div>
@@ -126,7 +144,19 @@
 	<!-- Salvattore -->
 	<script src="/js/salvattore.min.js"></script>
 	<!-- Main JS -->
-	<script src="/js/main.js"></script>
+  <script src="/js/main.js"></script>
+  
+  <script type="text/javascript">
+
+    $('.popovers').popover();
+    window.setTimeout(function() {
+    $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+    $(this).remove(); 
+    });
+    // 500 : Time will remain on the screen
+    }, 500);
+
+    </script>
 
     <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->

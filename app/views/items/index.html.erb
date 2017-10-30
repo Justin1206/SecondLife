@@ -1,3 +1,38 @@
+<style>
+		.form-control{
+			background-color:transparent;
+			border:none;
+			font-size:17px;
+			border-radius:0px;
+
+		}
+		form .hr-xs
+		{
+		  margin-top:5px;
+		  margin-bottom:5px
+		}
+
+		form input:-webkit-autofill{
+			-webkit-box-shadow:0 0 0 1000px #fff inset;
+            -webkit-text-fill-color:#818a91;
+            -webkit-transition:none;
+            -o-transition:none;
+            transition:none;
+		}
+
+
+</style>		
+			
+			<%= form_tag(items_path, :method => "get", id: "search-form", class:"form-inline") do %>
+			<div class="form-group">
+					<div class="input-group">
+					  <%= text_field_tag :search, params[:search], placeholder: "商品  分類",  class: "form-control"%>
+					</div>
+				  </div>
+			<hr class="hr-xs form-inline">			
+			<%= submit_tag "搜尋", class: "btn btn-primary" %>
+            <% end %>
+					
 <div class="row">
 			<div id="fh5co-board" data-columns>
 					<% @items.each do |item| %>
@@ -13,12 +48,12 @@
 											<h6><%= item.price %>元</h6>
 											<%= truncate(item.description, length:15) %>
 													<% if current_user.blank? %>
-													<%= link_to '喜歡', new_session_path(:user), class: "btn btn-success btn-sm" %>
+													<%= link_to '喜歡', new_session_path(:user), class: "btn btn-primary btn-sm" %>
 													<% else %>
 															<% if current_user.favorites.include?(item) %>
-																<%= link_to '不喜歡', favorite_item_path(item, type: "unfavorite"), class: "btn btn-danger btn-sm ", method: :put %>
+																<%= link_to '丟了', favorite_item_path(item, type: "unfavorite"), class: "btn btn-success btn-sm ", method: :put %>
 															<% else %>
-																<%= link_to '想買',  favorite_item_path(item, type: "favorite"), class: "btn btn-success btn-sm ", method: :put %>
+																<%= link_to '喜歡',  favorite_item_path(item, type: "favorite"), class: "btn btn-primary btn-sm ", method: :put %>
 															<% end %>
 												<% end %>
 										</div>

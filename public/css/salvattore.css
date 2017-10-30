@@ -8,7 +8,7 @@
 .column {
     float: left;
 }
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 310px) {
     .column {
         float: none;
         position: relative;
@@ -52,13 +52,13 @@
     }
 }
 
-@media screen and (min-width: 650px) and (max-width: 750px){
+@media screen and (min-width: 650px) and (max-width: 950px){
     #fh5co-board[data-columns]::before {
         content: '4 .column.size-1of4';
     }
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 951px) {
     #fh5co-board[data-columns]::before {
         content: '5 .column.size-1of5';
     }
