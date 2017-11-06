@@ -6,7 +6,10 @@
 					<h3><%= current_user.email %></h3>
 					<ul class="fh5co-list-check">
 						<li class="fh5co-include">最後登入：<%= current_user.last_sign_in_at %></li>
-						<li>登入次數：<%= current_user.sign_in_count %></li>
+						<li class="fh5co-include">登入次數：<%= current_user.sign_in_count %></li>
+						<li class="fh5co-include">買家評價：</li>
+						<li class="fh5co-include">賣家評價：</li>
+						
 					</ul>
 					<%= link_to '修改密碼', edit_registration_path(:user), class:"btn btn-block btn-sm btn-primary" %>
 				</div>

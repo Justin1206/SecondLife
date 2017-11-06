@@ -25,24 +25,33 @@
 
 
 </style>		
-		<%= form_tag(items_path, :method => "get") do %>							
-		<div class="row">
-				<div class="col-md-8 col-sm-offset-2">
-					<div id="imaginary_container"> 
-						<div class="input-group stylish-input-group input-append">
-							<%= text_field_tag :search, params[:search], placeholder: "商品 分類",  class: "form-control"%>		
-							<span class="input-group-addon">
-								<button type="submit">
-									<span class="glyphicon glyphicon-search"></span>
-								</button>  
-							</span>		
-						</div>
-						<hr class="hr-xs">			
-						
-					</div>
+<%= form_tag(items_path, :method => "get") do %>							
+<div class="row">
+		<div class="col-md-8 col-sm-offset-2">
+			<div id="imaginary_container"> 
+				<div class="input-group stylish-input-group input-append">
+					<%= text_field_tag :search, params[:search], placeholder: "商品 分類",  class: "form-control"%>		
+					<span class="input-group-addon">
+						<button type="submit">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>  
+					</span>		
 				</div>
+				<hr class="hr-xs">			
+				
 			</div>
-			<% end %>	
+		</div>
+		<div class="col-md-8 col-sm-offset-2">
+			<a href="?utf8=✓&search=二手書&commit=搜尋" class="btn btn-sm btn-primary">二手書類</a>	
+			<a href="?utf8=✓&search=服務、票券&commit=搜尋" class="btn btn-sm btn-success">服務、票券</a>
+			<a href="?utf8=✓&search=居家生活&commit=搜尋" class="btn btn-sm btn-info">居家生活</a>	
+			<a href="?utf8=✓&search=男女服飾&commit=搜尋" class="btn btn-sm btn-danger">男女包鞋服飾</a>
+			<a href="?utf8=✓&search=3C數位&commit=搜尋" class="btn btn-sm btn-warning">3C數位周邊</a>
+			<a href="?utf8=✓&search=其他類別&commit=搜尋" class="btn btn-sm btn-success">其他類別</a>	
+		</div>
+	</div>
+	<% end %>
+
 					
 <div class="row">
 			<div id="fh5co-board" data-columns>
@@ -57,7 +66,7 @@
 										<div class="fh5co-desc">
 											<h6><%= item.name %></h6>
 											<h6><%= item.price %>元</h6>
-											<%= truncate(item.description, length:15) %>
+											<!-- <%= truncate(item.description, length:15) %> -->
 													<% if current_user.blank? %>
 													<%= link_to '喜歡', new_session_path(:user), class: "btn btn-primary btn-sm" %>
 													<% else %>

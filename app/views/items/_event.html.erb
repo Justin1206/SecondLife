@@ -32,6 +32,9 @@
               <p style="display:inline"><b>分類：</b><span class="span2"> <%= @item.category %></span></p>
               &nbsp; &nbsp; &nbsp; &nbsp;
               <p style="display:inline"><b>狀態：</b><span class="span2"> <%=  @item.status %></span></p>
+              &nbsp; &nbsp; &nbsp; &nbsp;
+              <p style="display:inline"><b>價格：</b><span class="span2"> <%=  @item.price %></span></p>
+              &nbsp; &nbsp; &nbsp; &nbsp;
             </div>
       
             <div class="modal-body" style="background-color:#EEEEEE; color:#fff">
@@ -48,7 +51,7 @@
                         <%= link_to '想買',  favorite_item_path(@item, type: "favorite"), class: "btn btn-success btn-sm ", method: :put %>
                       <% end %>
               <% end %>
-              <button type="button" class="btn btn-primary" data-dismiss="modal">在考慮</button>
+              <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">再考慮</button>
             </div>
           </div>
         </div>
