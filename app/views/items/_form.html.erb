@@ -1,4 +1,4 @@
-<%= form_with(model: item, local: true) do |form| %>
+<%= form_with(model: item, local: true, :html =>{:multipart => true} ) do |form| %>
   <% if item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -27,7 +27,7 @@
 
     <div class="field">
       <%= form.label :商品分類： %>
-      <%= form.select 'category', options_for_select(["3C", "生活用品", "傢俱", "衣服", "文具","其他" ],"其他"), {}, :class => 'form-control' %>
+      <%= form.select 'category', options_for_select(["二手書", "服務、票券", "居家生活", "男女包鞋服飾", "3C數位周邊","其他類別" ],"其他類別"), {}, :class => 'form-control' %>
     </div>
 
     <div class="field">

@@ -8,6 +8,6 @@ class User < ApplicationRecord
 
   has_many :item 
 
-  has_many :wlists # just the 'relationships'
+  has_many :wlists, :dependent => :destroy
   has_many :favorites, through: :wlists, source: :item
 end

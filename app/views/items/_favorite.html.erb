@@ -1,0 +1,9 @@
+<% if current_user.favorites.include?(item) %>
+    <%= link_to  favorite_item_path(item, type: "unfavorite"), method: :put , remote: true  do %>
+    <span class="glyphicon glyphicon-heart"></span>
+    <% end %>
+<% else %>
+    <%= link_to  favorite_item_path(item, type: "favorite"), method: :put , remote: true   do %>
+    <span class="glyphicon glyphicon-heart-empty"></span>
+    <% end %>
+<% end %>

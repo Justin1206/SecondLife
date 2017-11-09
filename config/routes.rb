@@ -5,12 +5,14 @@ Rails.application.routes.draw do
   resources :items do
     put :favorite, on: :member
   end
+  
 
   resources :users do
     collection do
-    post :usertosale
+      post :usertosale
+    end
   end
-  end
+
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

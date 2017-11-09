@@ -45,7 +45,7 @@
 			<a href="?utf8=✓&search=二手書&commit=搜尋" class="btn btn-sm btn-primary">二手書類</a>	
 			<a href="?utf8=✓&search=服務、票券&commit=搜尋" class="btn btn-sm btn-success">服務、票券</a>
 			<a href="?utf8=✓&search=居家生活&commit=搜尋" class="btn btn-sm btn-info">居家生活</a>	
-			<a href="?utf8=✓&search=男女服飾&commit=搜尋" class="btn btn-sm btn-danger">男女包鞋服飾</a>
+			<a href="?utf8=✓&search=男女包鞋服飾&commit=搜尋" class="btn btn-sm btn-danger">男女包鞋服飾</a>
 			<a href="?utf8=✓&search=3C數位&commit=搜尋" class="btn btn-sm btn-warning">3C數位周邊</a>
 			<a href="?utf8=✓&search=其他類別&commit=搜尋" class="btn btn-sm btn-success">其他類別</a>	
 		</div>
@@ -64,17 +64,15 @@
 								</div>
 								<% end %>
 										<div class="fh5co-desc">
-											<h6><%= item.name %></h6>
+											<h6><%= truncate(item.name, length:18) %></h6>
 											<h6><%= item.price %>元</h6>
 											<!-- <%= truncate(item.description, length:15) %> -->
 													<% if current_user.blank? %>
 													<%= link_to '喜歡', new_session_path(:user), class: "btn btn-primary btn-sm" %>
 													<% else %>
-															<% if current_user.favorites.include?(item) %>
-																<%= link_to '丟了', favorite_item_path(item, type: "unfavorite"), class: "btn btn-success btn-sm ", method: :put %>
-															<% else %>
-																<%= link_to '喜歡',  favorite_item_path(item, type: "favorite"), class: "btn btn-primary btn-sm ", method: :put %>
-															<% end %>
+													<div id="favorite-<%= item.id %>">
+														<%= render partial: 'favorite', :locals => { :item => item } %>													
+													</div>
 												<% end %>
 										</div>
 							</div>
