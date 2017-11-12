@@ -39,6 +39,10 @@ gem 'devise'
 gem 'rolify'
 gem 'cancancan'
 
+#圖片上傳
+gem 'carrierwave'
+gem 'rmagick'
+
 
 #終端機排列
 gem "awesome_print", require:"ap"

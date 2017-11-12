@@ -42,14 +42,15 @@
 			</div>
 		</div>
 		<div class="col-md-8 col-sm-offset-2">
-			<a href="?utf8=✓&search=二手書&commit=搜尋" class="btn btn-sm btn-primary">二手書類</a>	
+			<a href="?utf8=✓&search=二手書&commit=搜尋" class="btn btn-sm btn-primary">二手書類</a>
 			<a href="?utf8=✓&search=服務、票券&commit=搜尋" class="btn btn-sm btn-success">服務、票券</a>
 			<a href="?utf8=✓&search=居家生活&commit=搜尋" class="btn btn-sm btn-info">居家生活</a>	
 			<a href="?utf8=✓&search=男女包鞋服飾&commit=搜尋" class="btn btn-sm btn-danger">男女包鞋服飾</a>
 			<a href="?utf8=✓&search=3C數位&commit=搜尋" class="btn btn-sm btn-warning">3C數位周邊</a>
-			<a href="?utf8=✓&search=其他類別&commit=搜尋" class="btn btn-sm btn-success">其他類別</a>	
+			<a href="?utf8=✓&search=其他類別&commit=搜尋" class="btn btn-sm btn-success">其他類別</a>
 		</div>
 	</div>
+
 	<% end %>
 
 					
@@ -71,7 +72,7 @@
 													<%= link_to '喜歡', new_session_path(:user), class: "btn btn-primary btn-sm" %>
 													<% else %>
 													<div id="favorite-<%= item.id %>">
-														<%= render partial: 'favorite', :locals => { :item => item } %>													
+														<%= render partial: 'favorite', :locals => { :item => item } %>	
 													</div>
 												<% end %>
 										</div>

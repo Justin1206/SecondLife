@@ -11,14 +11,11 @@ class ItemsController < ApplicationController
     if type == "favorite"
             if 
               current_user.favorites.include?(@item)
-              render 'favorite'
             else
               current_user.favorites << @item
-              render 'favorite'
             end
     elsif type == "unfavorite"
         current_user.favorites.delete(@item)
-        render 'favorite'
     end
   end
 
@@ -83,8 +80,8 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to users_path, notice: '成功刪除商品' }
-      format.json { head :no_content }
+      # format.html { redirect_to :back, notice: '成功刪除商品' }
+      format.js # destroy.js.erb
     end
   end
 

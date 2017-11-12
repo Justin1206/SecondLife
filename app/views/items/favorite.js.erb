@@ -1,1 +1,4 @@
 $("#favorite-<%= @item.id %>").html("<%= escape_javascript(render :partial => 'favorite', :locals => { :item => @item }) %>");
+
+$("#favorite-<%= @item.id %>-<%= @item.id %>").html("<%= escape_javascript(render :partial => 'favorite', :locals => { :item => @item }) %>");
+

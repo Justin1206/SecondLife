@@ -12,6 +12,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     
+    
     <!-- Animate.css  -->
     <link rel="stylesheet" href="/css/animate.css">
     <!-- Icomoon Icon Fonts-->
@@ -25,10 +26,10 @@
     <!-- Modernizr JS -->
     <script src="/js/modernizr-2.6.2.min.js"></script>
     <!-- FOR IE9 below -->
-    <!--[if lt IE 9]>
+    <!--[if lt IE 9]
     <script src="js/respond.min.js"></script>
-    <![endif]
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"> -->
+    [endif] 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"> -->
 
     <style>
         .popupunder{
@@ -70,7 +71,6 @@
             <li><%= link_to '我的帳號', users_path %></li>
             <li><%= link_to '我要賣', new_item_path %></li>
             <!-- <li>我的商品</li> -->
-            <li>書</li>
             
             <li><%= link_to '登出', destroy_user_session_path, :method => :delete %></li>
           <% else %>
@@ -112,7 +112,6 @@
           <%= yield %>
         </div>
     </div>
-
 
     <footer id="fh5co-footer">
       
