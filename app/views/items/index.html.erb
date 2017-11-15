@@ -72,7 +72,7 @@
 													<%= link_to '喜歡', new_session_path(:user), class: "btn btn-primary btn-sm" %>
 													<% else %>
 													<div id="favorite-<%= item.id %>">
-														<%= render partial: 'favorite', :locals => { :item => item } %>	
+														<%= render partial: 'favorite', :locals => { :item => item, :wlist => @wlists } %>	
 													</div>
 												<% end %>
 										</div>

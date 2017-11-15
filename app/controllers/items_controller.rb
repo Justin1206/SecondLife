@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
       @items = Item.where('name LIKE ? OR  category LIKE ?', "%#{params[:search]}%",  "%#{params[:search]}%")
     else
       @items = Item.all
+      @wlists = Wlist.all
     end  
   end
 
