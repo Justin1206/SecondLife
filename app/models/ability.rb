@@ -28,7 +28,7 @@ class Ability
     can :read, Item
     can :favorite, Item
     can :unfavorite, Item
-    can :manage, User    
+    can :manage, User
   end
 
 end

@@ -23,7 +23,6 @@
 		  margin-bottom:5px
 		}
 
-
 </style>		
 <%= form_tag(items_path, :method => "get") do %>							
 <div class="row">
@@ -74,13 +73,22 @@
 													<div id="favorite-<%= item.id %>">
 														<%= render partial: 'favorite', :locals => { :item => item, :wlist => @wlists } %>	
 													</div>
+													<% if current_user.id == item.user_id %>
+													<p>您的商品</p>
+													<% else %>
+													<%= link_to '聊聊', conversations_path(user_id: item.user_id, item_id: item.id), method: :post, class: "btn btn-success btn-sm", style:"display:inline" %>
+													<% end %>
 												<% end %>
+
 										</div>
 							</div>
 
 					<% end %>
 			</div>
 </div>
+
+
+
 
 
 

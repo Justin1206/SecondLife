@@ -1,4 +1,5 @@
 Rails.application.routes.draw do  
+
   devise_for :users
   root to: 'items#index'
 
@@ -11,6 +12,14 @@ Rails.application.routes.draw do
     collection do
       post :usertosale
     end
+  end
+
+  resources :conversations, only: [:create, :index] do
+    member do
+      post :close
+    end
+
+    resources :messages, only: [:create]
   end
 
   

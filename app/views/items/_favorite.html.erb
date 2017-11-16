@@ -2,12 +2,9 @@
     <%= link_to  favorite_item_path(item, type: "unfavorite"), method: :put , remote: true, style:"display:inline" do %>
     <span class="glyphicon glyphicon-heart" style="font-size: 20px;"></span>
     <% end %>
-    <%= link_to '聊聊', "#", class: "btn btn-success btn-sm", style:"display:inline" %>													
     
 <% else %>
     <%= link_to  favorite_item_path(item, type: "favorite"), method: :put , remote: true, style:"display:inline"  do %>
     <span class="glyphicon glyphicon-heart-empty" style="font-size: 20px;"></span>
-    <% end %>
-    <%= link_to '聊聊', "#", class: "btn btn-success btn-sm", style:"display:inline" %>													
-    
+    <% end %>    
 <% end %>

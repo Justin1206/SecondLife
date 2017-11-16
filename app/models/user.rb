@@ -10,4 +10,7 @@ class User < ApplicationRecord
 
   has_many :wlists, :dependent => :destroy
   has_many :favorites, through: :wlists, source: :item
+
+  has_many :messages
+  has_many :conversations
 end

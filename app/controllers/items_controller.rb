@@ -22,10 +22,14 @@ class ItemsController < ApplicationController
   def index
     if params[:search]
       @items = Item.where('name LIKE ? OR  category LIKE ?', "%#{params[:search]}%",  "%#{params[:search]}%")
+      # session[:conversations] ||= []
+      # @conversations = Conversation.all.where(id: @items.ids)
+      # @conversations = Conversation.includes(:recipient, :messages).find(session[:conversations])
     else
       @items = Item.all
-      @wlists = Wlist.all
-    end  
+    end 
+
+
   end
 
   # GET /items/1
