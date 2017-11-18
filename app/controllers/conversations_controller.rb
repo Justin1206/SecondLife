@@ -10,14 +10,14 @@ class ConversationsController < ApplicationController
 
     # (sender_id: current_user 'OR' recipient_id: current_user)
 
-    @conversations = Conversation.includes(:item, :messages)
+    @conversations = Conversation.includes(:recipient, :messages)
                                  .find(session[:conversations])
   end
 
   def create
     @conversation = Conversation.get(params[:recipient_id], params[:sender_id], params[:item_id])
 
-    add_to_conversations 
+    add_to_conversations
 
     respond_to do |format|
       format.html { redirect_to conversations_path }
@@ -51,7 +51,7 @@ class ConversationsController < ApplicationController
     session[:conversations] << @conversation.id
   end
 
-  # def conversated?
-  #   session[:conversations].include?(@conversation.id)
-  # end
+  def conversated?
+    session[:conversations].include?(@conversation.id)
+  end
 end
