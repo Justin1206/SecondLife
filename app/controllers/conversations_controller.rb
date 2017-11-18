@@ -6,19 +6,28 @@ class ConversationsController < ApplicationController
     session[:conversations] ||= []
 
     # @users = User.all.where.not(id: current_user)
-    @conversation = Conversation.all.includes(:item).where(sender_id: current_user)
+    @conversation = Conversation.all.includes(:item).where("sender_id = ?  OR recipient_id = ?", current_user, current_user)
 
-    @conversations = Conversation.includes(:recipient, :messages)
+    # (sender_id: current_user 'OR' recipient_id: current_user)
+
+    @conversations = Conversation.includes(:item, :messages)
                                  .find(session[:conversations])
   end
 
-
-
   def create
-    @conversation = Conversation.get(current_user.id, params[:user_id], params[:item_id])
+    @conversation = Conversation.get(params[:recipient_id], params[:sender_id], params[:item_id])
 
     add_to_conversations 
 
+    respond_to do |format|
+      format.html { redirect_to conversations_path }
+      format.js
+    end
+  end
+
+  def show
+    @conversation = Conversation.find(params[:id])
+    
     respond_to do |format|
       format.html { redirect_to conversations_path }
       format.js

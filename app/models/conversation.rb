@@ -3,7 +3,8 @@ class Conversation < ApplicationRecord
     belongs_to :sender, class_name: 'User'
     belongs_to :recipient, class_name: 'User'
     belongs_to :item
-    # validates :sender_id, uniqueness: { scope: :recipient_id }
+    
+    validates :sender_id, uniqueness: { scope: :recipient_id }
   
     scope :between, -> (sender_id, recipient_id, item_id) do
       where(sender_id: sender_id, recipient_id: recipient_id, item_id: item_id).or(
@@ -19,7 +20,7 @@ class Conversation < ApplicationRecord
       create(sender_id: sender_id, recipient_id: recipient_id, item_id: item_id)
     end
   
-    # def opposed_user(user)
-    #   user == recipient ? sender : recipient
-    # end
+    def opposed_user(user)
+      user == recipient ? sender : recipient
+    end
   end

@@ -1,12 +1,5 @@
 
       <div class="row">
-          <div class="col-md-9">
-            <ul id="conversations-list">
-              <% @conversations.each do |conversation| %>
-                <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
-              <% end %>
-            </ul>
-          </div>
         
           <div class="col-md-3">
             <div class="panel panel-primary">
@@ -16,10 +9,27 @@
               <div class="panel-body">
                 <ul>
                   <% @conversation.each do |conversation| %>
-                  <li><%= link_to conversation.item.name, conversations_path(user_id: conversation.item.user_id, item_id:conversation.item.id), remote: true, method: :post %></li>
+                  <li>
+                      <%= link_to conversation.item.name, conversation_path(conversation), remote: true %> 
+                      <% if current_user.email == conversation.item.user.email%>
+                      買家：<%= conversation.sender_id %> 正在詢問        
+                      <% else%>
+                      賣家：<%= conversation.item.user.email %>
+                      <% end %>
+                  </li>
                   <% end %>
                 </ul>
               </div>
             </div>
           </div>
+
+
+          <div class="col-md-9">
+              <ul id="conversations-list">
+                <% @conversations.each do |conversation| %>
+                  <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
+                <% end %>
+              </ul>
+            </div>
+            
         </div>
