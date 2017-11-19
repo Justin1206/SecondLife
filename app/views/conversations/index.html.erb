@@ -1,21 +1,17 @@
 
       <div class="row">
         
-          <div class="col-md-3">
+          <div class="col-md-6">
             <div class="panel panel-primary">
               <div class="panel-heading">
-                <h3 class="panel-title">User list</h3>
+                <h3 class="panel-title">您正洽詢想買的</h3>
               </div>
               <div class="panel-body">
                 <ul>
-                  <% @conversation.each do |conversation| %>
+                  <% @senderconversation.each do |senderconversation| %>
                   <li>
-                      <%= link_to conversation.item.name, conversation_path(conversation), remote: true %> 
-                      <% if current_user.email == conversation.item.user.email%>
-                      買家：<%= conversation.sender_id %> 正在詢問        
-                      <% else%>
-                      賣家：<%= conversation.item.user.email %>
-                      <% end %>
+                      <%= link_to senderconversation.item.name, conversation_path(senderconversation), remote: true %> 
+                      賣家是<%= senderconversation.item.user.email %>
                   </li>
                   <% end %>
                 </ul>
@@ -23,8 +19,26 @@
             </div>
           </div>
 
+          <div class="col-md-6">
+              <div class="panel panel-success">
+                <div class="panel-heading">
+                  <h3 class="panel-title">您可能能賣出的</h3>
+                </div>
+                <div class="panel-body">
+                  <ul>
+                    <% @recipientconversation.each do |recipientconversation| %>
+                    <li>
+                        <%= link_to recipientconversation.item.name, conversation_path(recipientconversation), remote: true %> 
+                        買家是<%= recipientconversation.sender.email %> 正在詢問        
+                    </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
-          <div class="col-md-9">
+
+          <div class="col-md-12">
               <ul id="conversations-list">
                 <% @conversations.each do |conversation| %>
                   <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
@@ -33,3 +47,5 @@
             </div>
             
         </div>
+
+

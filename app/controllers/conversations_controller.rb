@@ -6,7 +6,9 @@ class ConversationsController < ApplicationController
     session[:conversations] ||= []
 
     # @users = User.all.where.not(id: current_user)
-    @conversation = Conversation.all.includes(:item).where("sender_id = ?  OR recipient_id = ?", current_user, current_user)
+    @senderconversation = Conversation.all.includes(:item).where(sender_id: current_user)
+    @recipientconversation = Conversation.all.includes(:item).where(recipient_id: current_user)
+    
 
     # (sender_id: current_user 'OR' recipient_id: current_user)
 
