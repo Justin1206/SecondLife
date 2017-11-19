@@ -37,8 +37,8 @@
 																<h6><%= truncate(item.name, length:10) %></h6>
 																<h6><%= item.price %>元</h6>
 																<%= truncate(item.description, length:15) %><br>
-																<%= link_to '修改', edit_item_url(item) , class: "btn btn-info btn-sm", style: "display:inline" %>
-																<%= link_to '刪除', item_path(item), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: 'Are you sure?' },  style: "display:inline", :remote => true %>										
+																<%= link_to '修改', edit_item_url(item) , class: "btn btn-info btn-sm",  style:"width:100%" %>
+																<%= link_to '刪除', item_path(item), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: 'Are you sure?' },  :remote => true, style:"width:100%" %>										
 															</div>
 												</div>
 										<% end %>
@@ -65,8 +65,8 @@
 														<h6><%= favorite.name %></h6>
 														<h6><%= favorite.price %>元</h6>
 														<%= truncate(favorite.description, length:15) %><br>
-														<%= link_to "買！", favorite_item_path(favorite, type: "unfavorite"), class: "btn btn-info btn-sm", method: :put, style: "display:inline" %>																
-														<%= link_to "丟了", favorite_item_path(favorite, type: "unfavorite"), class: "btn btn-danger btn-sm", method: :put, style: "display:inline" %>				
+														<%= link_to "買！", favorite_item_path(favorite, type: "unfavorite"), class: "btn btn-info btn-sm", method: :put, style: "display:inline", style:"width:100%" %>																
+														<%= link_to "丟了", favorite_item_path(favorite, type: "unfavorite"), class: "btn btn-danger btn-sm", method: :put, style: "display:inline", style:"width:100%" %>				
 													</div>
 										</div>
 								<% end %>

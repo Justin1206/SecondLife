@@ -3,7 +3,8 @@ class ConversationsController < ApplicationController
   skip_authorization_check
 
   def index
-    session[:conversations] ||= []
+    # session[:conversations] ||= []
+    # session[:conversations] = Conversation.all.where(id: current_user).ids
 
     # @users = User.all.where.not(id: current_user)
     @senderconversation = Conversation.all.includes(:item).where(sender_id: current_user)
@@ -12,14 +13,14 @@ class ConversationsController < ApplicationController
 
     # (sender_id: current_user 'OR' recipient_id: current_user)
 
-    @conversations = Conversation.includes(:recipient, :messages)
-                                 .find(session[:conversations])
+    @conversations = Conversation.includes(:recipient, :messages).where(sender_id: current_user)
+                                #  .find(session[:conversations])
   end
 
   def create
     @conversation = Conversation.get(params[:recipient_id], params[:sender_id], params[:item_id])
+    # add_to_conversations
 
-    add_to_conversations
 
     respond_to do |format|
       format.html { redirect_to conversations_path }
@@ -43,6 +44,19 @@ class ConversationsController < ApplicationController
 
     respond_to do |format|
       format.js
+    end
+  end
+
+  def destroy
+    @conversation = Conversation.find(params[:id])
+
+    # session[:conversations].delete(@conversation.id)
+
+    @conversation.destroy
+
+    respond_to do |format|
+      format.html { redirect_to conversations_path }      
+      format.js 
     end
   end
 

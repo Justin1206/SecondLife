@@ -64,11 +64,12 @@
 								</div>
 								<% end %>
 										<div class="fh5co-desc">
-											<h6><%= truncate(item.name, length:18) %></h6>
+											<h6 class="fh5co-item-title"><%= truncate(item.name, length:18) %></h6>
 											<h6><%= item.price %>元</h6>
 											<!-- <%= truncate(item.description, length:15) %> -->
+											<div class="btn-ground">
 													<% if current_user.blank? %>
-													<%= link_to '喜歡', new_session_path(:user), class: "btn btn-primary btn-sm" %>
+													<%= link_to '喜歡', new_session_path(:user), class: "btn btn-outline btn-sm", style:"width:100%" %>
 													<% else %>
 													<div id="favorite-<%= item.id %>">
 														<%= render partial: 'favorite', :locals => { :item => item, :wlist => @wlists } %>	
@@ -76,10 +77,10 @@
 													<% if current_user.id == item.user_id %>
 													<p>您的商品</p>
 													<% else %>
-													<%= link_to '聊聊', conversations_path(recipient_id: item.user_id, sender_id: current_user.id, item_id: item.id), method: :post, class: "btn btn-success btn-sm", style:"width:100%" %>
+													<%= link_to '聊聊', conversations_path(recipient_id: item.user_id, sender_id: current_user.id, item_id: item.id), method: :post, class: "btn btn-outline btn-sm", style:"width:100%" %>
 													<% end %>
 												<% end %>
-
+											</div>
 										</div>
 							</div>
 
