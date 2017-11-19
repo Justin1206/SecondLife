@@ -7678,20 +7678,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #fh5co-main {
-  padding-top: 5em;
+  padding-top: 0.5em;
 }
 
 #fh5co-board .item {
-  margin: 10px 10px 20px 10px;
+  margin: 10px 15px 30px 15px;
   background: #fff;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   border-radius: 4px;
   overflow: hidden;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
-  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+  -webkit-box-shadow: 0 30px 50px rgba(0, 0, 0, 0.07);
+  -moz-box-shadow: 0 30px 50px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 30px 50px rgba(0, 0, 0, 0.07);
 }
 #fh5co-board .item a {
   display: block;
@@ -7702,7 +7702,6 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 24px;
 }
 #fh5co-board .item .fh5co-item-title {
-  font-family: "Montserrat", arial, sans-serif;
   font-size: 17px;
   line-height: 24px;
   margin: 0;

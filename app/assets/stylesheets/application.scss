@@ -12,11 +12,12 @@
  *
  *= require_tree .
  *= require_self
+ *= require conversations
  */
 
  @import url(//fonts.googleapis.com/earlyaccess/nanumpenscript.css);     
             
- body {
+ body{
    font-family: 'cwTeXKai', serif;        
  }
 
@@ -26,22 +27,34 @@
     list-style: none;
   }
 
-
-
-
   .messages-list {
-    max-height: 200px;
+    max-height: 300px;
     overflow-y: none;
     overflow-x: auto;
+  }
+
+  .messages-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  textarea::-webkit-scrollbar {
+    display: none;
   }
   
   
   .message-sent {
     position: relative;
-    background-color: #D9EDF7;
-    border-color: #BCE8F1;
+    background-color: #49AFF9;
+    border-color: #49AFF9;
+    color: #fff;
     margin: 5px 20px;
     padding: 10px;
+    float: right;
+  }
+
+  .message-sent > .time{
+    position: relative;
+    font-size: 1px;
     float: right;
   }
   
@@ -53,3 +66,24 @@
     padding: 10px;
     float: left;
   }
+
+  .message-received > .time{
+    position: relative;
+    font-size: 1px;
+    float: left;
+  }
+
+
+  .input {
+    border:0; 
+    color:#828891; 
+    border:solid 1px #ccc; 
+    -webkit-border-radius: 10px; 
+    -moz-border-radius: 10px; 
+    border-radius: 10px;
+}
+input:focus { 
+  outline: none !important;
+  border-color: #fff;
+  box-shadow: 0 0 10px #fff;
+}
