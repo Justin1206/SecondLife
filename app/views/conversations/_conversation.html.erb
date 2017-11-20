@@ -38,11 +38,16 @@
         <form class="new_message">
             <input name="conversation_id" type="hidden" value="<%= conversation.id %>">
             <input name="user_id" type="hidden" value="<%= user.id %>">
-            <textarea name="body" id="body" class="input" style="resize: none; width:100%; max-height: 35px;"></textarea>
-            <!-- <input type="submit" class="btn btn-success" id="submit" value="Send"> -->
+            <textarea name="body" id="body" class="input" style="resize: none; width:100%;  max-height: 28px; display:inline;"></textarea>
+            <input type="submit" class="btn btn-success btn-sm" value="送出">
           </form>
       </div>
     </div>
   </li>
+
+
+  <!-- onkeypress="if (event.keyCode == 13) { $("#submit").trigger("click"); }" -->
+
+
 
 

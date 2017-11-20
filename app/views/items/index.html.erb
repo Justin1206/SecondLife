@@ -71,12 +71,12 @@
 													<% if current_user.blank? %>
 													<%= link_to '喜歡', new_session_path(:user), class: "btn btn-outline btn-sm", style:"width:100%" %>
 													<% else %>
-													<div id="favorite-<%= item.id %>">
-														<%= render partial: 'favorite', :locals => { :item => item, :wlist => @wlists } %>	
-													</div>
 													<% if current_user.id == item.user_id %>
 													<p>您的商品</p>
 													<% else %>
+													<div id="favorite-<%= item.id %>">
+														<%= render partial: 'favorite', :locals => { :item => item, :wlist => @wlists } %>	
+													</div>
 													<%= link_to '聊聊', conversations_path(recipient_id: item.user_id, sender_id: current_user.id, item_id: item.id), method: :post, class: "btn btn-outline btn-sm", style:"width:100%" %>
 													<% end %>
 												<% end %>

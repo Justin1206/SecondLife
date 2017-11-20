@@ -65,8 +65,10 @@
 														<h6><%= favorite.name %></h6>
 														<h6><%= favorite.price %>元</h6>
 														<%= truncate(favorite.description, length:15) %><br>
-														<%= link_to "買！", favorite_item_path(favorite, type: "unfavorite"), class: "btn btn-info btn-sm", method: :put, style: "display:inline", style:"width:100%" %>																
-														<%= link_to "丟了", favorite_item_path(favorite, type: "unfavorite"), class: "btn btn-danger btn-sm", method: :put, style: "display:inline", style:"width:100%" %>				
+														<div id="favorite-<%= favorite.id %>">
+																<%= render partial: 'items/favorite', :locals => { :item => favorite, :wlist => @wlists } %>	
+														</div>
+														<%= link_to '聊聊', conversations_path(recipient_id: favorite.user_id, sender_id: current_user.id, item_id: favorite.id), method: :post, class: "btn btn-outline btn-sm", style:"width:100%" %>
 													</div>
 										</div>
 								<% end %>
