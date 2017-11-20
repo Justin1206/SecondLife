@@ -9,17 +9,17 @@
 
 
           <div class="row">
-              <div class="col-xs-2"><img src="<%= conversation.item.picture %>" width="100%" height="100%"></div>
-              <div class="col-xs-2"><%= conversation.item.category %></div>
-              <div class="col-xs-2">狀態<br><%= conversation.item.status %></div>
-              <div class="col-xs-2">賣家評價<br>＊＊＊＊</div>
-              <div class="col-xs-2">價格<br><%= conversation.item.price %></div>
+              <div class="col-md-2"><img src="<%= conversation.item.picture %>" width="100%" height="100%"></div>
+              <!-- <div class="col-md-2"><%= conversation.item.category %></div> -->
+              <div class="col-md-2">狀態<br><%= conversation.item.status %></div>
+              <div class="col-md-2">賣家評價<br>＊＊＊＊</div>
+              <div class="col-md-2">價格<br><%= conversation.item.price %></div>
               <% if conversation.sender_id == user.id %>
-                <div class="col-xs-2"><%= link_to "確認<br>購買".html_safe, "#", class: "btn btn-success btn-sm" %>
-                  <%= link_to "取消<br>購買".html_safe, conversation_path(conversation), method: :delete, data: { confirm: '刪除後，所以對話紀錄都會消失唷，您確定嗎？' }, class: "btn btn-danger btn-sm" %></div> 
+                <div class="col-xs-2"><%= link_to "確認<br>購買".html_safe, "#", class: "btn btn-success btn-sm" %></div>
+                <div class="col-xs-2"><%= link_to "取消<br>購買".html_safe, conversation_path(conversation), method: :delete, data: { confirm: '刪除後，所以對話紀錄都會消失唷，您確定嗎？' }, class: "btn btn-danger btn-sm" %></div> 
               <% else %>
-                <div class="col-xs-2"><%= link_to "確認<br>賣出".html_safe, "#", class: "btn btn-success btn-sm" %>
-                  <%= link_to "取消<br>賣出".html_safe, conversation_path(conversation), method: :delete, data: { confirm: '刪除後，所以對話紀錄都會消失唷，您確定嗎？' }, class: "btn btn-danger btn-sm" %></div> 
+                <div class="col-xs-2"><%= link_to "確認<br>賣出".html_safe, "#", class: "btn btn-success btn-sm" %></div>
+                <div class="col-xs-2"><%= link_to "取消<br>賣出".html_safe, conversation_path(conversation), method: :delete, data: { confirm: '刪除後，所以對話紀錄都會消失唷，您確定嗎？' }, class: "btn btn-danger btn-sm" %></div> 
               <% end %>
             </div>
 

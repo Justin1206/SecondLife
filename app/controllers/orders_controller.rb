@@ -3,22 +3,15 @@ class OrdersController < ApplicationController
     skip_authorization_check
 
     def index
-
-
-        
     end
 
     def create
+        @order = Oorder.get(params[:item_id], params[:buyer_id], params[:seller_id])        
         @order = Oorder.create(order_params)
-    
+
         respond_to do |format|
-          if @item.save
-            format.html { redirect_to orders_path, notice: '商品建立成功' }
-            # format.json { render :show, status: :created, location: @item }
-          else
-            format.html { render :new }
-            format.json { render json: @order.errors, status: :unprocessable_entity }
-          end
+            format.html 
+            format.js # destroy.js.erb
         end
     end
 
