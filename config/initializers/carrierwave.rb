@@ -11,4 +11,8 @@
     # your S3 bucket name
     # config.fog_directory  = 'shucoupon'
     # custome your domain on aws S3, defaults to nil
+    config.fog_directory  = 'shucoupon'
+    # custome your domain on aws S3, defaults to nil
+    config.fog_host       = 'https://shushop.herokuapp.com'
+    config.fog_public     = true  
   end
