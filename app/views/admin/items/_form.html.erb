@@ -1,0 +1,154 @@
+<style>
+
+    .file-upload-wrapper {
+      position: relative;
+      width: 100%;
+      height: 60px;
+    }
+    .file-upload-wrapper:after {
+      content: attr(data-text);
+      font-size: 12px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #fff;
+      padding: 1px 5px;
+      display: block;
+      width: calc(100% - 40px);
+      pointer-events: none;
+      z-index: 20;
+      height: 40px;
+      line-height: 40px;
+      color: #999;
+      border-radius: 5px 10px 10px 5px;
+      font-weight: 300;
+    }
+    .file-upload-wrapper:before {
+      content: '上傳';
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: inline-block;
+      height: 40px;
+      background: #DE5E59;
+      color: #fff;
+      font-weight: 400;
+      z-index: 25;
+      font-size: 16px;
+      line-height: 42px;
+      padding: 0 15px;
+      text-transform: uppercase;
+      pointer-events: none;
+      border-radius: 0 5px 5px 0;
+    }
+    .file-upload-wrapper:hover:before {
+      background: #cc6666;
+    }
+    .file-upload-wrapper input {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 99;
+      height: 40px;
+      margin: 0;
+      padding: 0;
+      display: block;
+      cursor: pointer;
+      width: 100%;
+    }
+
+</style>
+
+<%= form_for(@item, url: admin_item_path(@item),  html: { method: :put }) do |form| %>
+  <% if item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="row">
+
+  <div class="col-md-6">
+
+      <div class="field">
+          <%= form.label :商品圖片： %><br>
+          <%= form.file_field :picture, id: :item_picture, onchange: "readURL(this);", class:"btn btn-primary" %>
+            <img id="img_prev" src="#" />
+      </div>
+
+      <script>
+          function readURL(input) {
+            if (input.files && input.files[0]) {
+              var reader = new FileReader();
+ 
+    
+              reader.onload = function (e) {
+                $('#img_prev')
+                  .attr('src', e.target.result)
+                  .width("100%")
+                  .height("100%");
+              };
+              reader.readAsDataURL(input.files[0]);
+            }
+          }
+        </script>
+
+  </div>
+
+  <div class="col-md-6">
+
+    <div class="form-group">
+     <%= form.label :商品名稱： %>
+     <%= form.text_field :name, id: :item_name,:class => 'form-control' %>
+    </div>
+
+<div class="row">
+    <div class="form-group col-xs-6">
+        <%= form.label :商品分類： %>
+        <%= form.select 'category', options_for_select(["二手書", "服務、票券", "居家生活", "男女包鞋服飾", "3C數位周邊","其他類別" ],"其他類別"), {}, :class => 'form-control' %>
+    </div>
+
+    <div class="form-group col-xs-6">
+      <%= form.label :商品狀態： %>
+      <%= form.select 'status', options_for_select(["全新", "二手"]), {}, :class => 'form-control' %>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-xs-6">
+      <%= form.label :商品數量： %>
+      <%= form.number_field :amount, id: :item_amount,:class => 'form-control' %>
+    </div>
+
+    <div class="form-group col-xs-6">
+      <%= form.label :商品價格： %>
+      <%= form.number_field :price, id: :item_price,:class => 'form-control' %>
+  </div>
+</div>
+
+
+    <div class="form-group">
+      <%= form.label :商品描述： %>
+      <%= form.text_area :description, id: :item_description,:class => 'form-control' %>
+    </div><br>
+
+
+    <div class="actions">
+      <%= form.submit "更新" ,class: "btn btn-primary btn-sm"%>
+      <%= link_to '返回', admin_items_path ,class: "btn btn-primary btn-sm" %>      
+   </div>
+
+  </div>
+
+</div>
+<% end %>
+ 

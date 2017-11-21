@@ -1,3 +1,7 @@
+<b><%= link_to '使用者後台', admin_users_path, class: "btn btn-primary btn-lg" %></b>
+
+<hr>
+
 <div class="row">
     
     <div class="col-md-12">
@@ -25,6 +29,9 @@
               <td><%= item.status %></td>
               <td><%= item.user.email %></td>
               <td>
+                <%= link_to '修改', edit_admin_item_url(item) , class: "btn btn-info btn-sm",  style:"width:100%" %>
+                <%= link_to '刪除', admin_item_path(item), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: 'Are you sure?' },  :remote => true, style:"width:100%" %>										
+              </td>
     
 
             </tr>

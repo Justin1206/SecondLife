@@ -70,7 +70,7 @@ class Admin::ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(admin_item_params)
-        format.html { redirect_to users_path, notice: '商品修改成功' }
+        format.html { redirect_to admin_items_path, notice: '商品修改成功' }
         # format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }
@@ -84,7 +84,7 @@ class Admin::ItemsController < ApplicationController
   def destroy
     @item.destroy
     respond_to do |format|
-      # format.html { redirect_to :back, notice: '成功刪除商品' }
+      format.html { redirect_to admin_items_path, notice: '成功刪除商品' }
       format.js # destroy.js.erb
     end
   end
