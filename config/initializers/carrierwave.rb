@@ -1,23 +1,17 @@
-CarrierWave.configure do |config|
-    if Rails.env.test?
-      config.storage = :file
-      config.enable_processing = false
-      
-    else
-      config.storage = :fog
-      config.fog_credentials = {
-        provider:              'AWS',
-        aws_access_key_id:     ENV['AKIAJ5BLPQH7G57L72KA'],
-        aws_secret_access_key: ENV['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'],
-        region:                ENV['ap-northeast-1']
-      }
-  
-      if Rails.env.production?
-        config.fog_directory  = ENV['shucoupon']
-      elsif Rails.env.staging?
-        config.fog_directory  = ENV['shucoupon']
-      elsif Rails.env.development?
-        config.fog_directory  = ENV['shucoupon']
-      end
-    end
+
+
+
+  CarrierWave.configure do |config|
+    config.fog_credentials = {
+      :provider               => 'AWS',       # required
+      :aws_access_key_id      => 'AKIAJ5BLPQH7G57L72KA',       # your aws access key id
+      :aws_secret_access_key  => '2eKfj8yuERe+usPmyITwnC2o9czU+HX6PsBnykqY',       # your aws secret access key
+      :region                 => 'ap-northeast-1'  # your bucket's region in S3, defaults to 'us-east-1'
+    }
+    # your S3 bucket name
+    config.fog_directory  = 'shucoupon'
+    # custome your domain on aws S3, defaults to nil
+    config.fog_host       = 'http://shushop.herokuapp.com/'
+    config.fog_public     = true                                   # optional, defaults to true
+    config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
   end
