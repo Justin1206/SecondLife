@@ -69,8 +69,9 @@
       <a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">選單 <i class="icon-cross"></i> </a>
       <h1 class="fh5co-logo"><%= link_to '貳拍' , root_url, class: "navbar-brand"%></h1>            
       <ul>
-          <% if current_user.has_role?(:admin) %>
+          <% if current_user && current_user.has_role?(:admin) %>
             <li><b><%= link_to '後台', admin_users_path %></b></li>
+          <% else %>
           <% end %>
           <% if current_user %>
             <li><%= link_to '我的帳號', users_path %></li>
