@@ -6,7 +6,7 @@
       :provider              => 'AWS',
       :aws_access_key_id     => 'AKIAIZMFYVL4WWOCM3UQ',
       :aws_secret_access_key => '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',
-      :region                => 'us-east-1'
+      :region                => 'ap-northeast-1'
     }
   
     config.cache_dir = "#{Rails.root}/tmp/uploads"
