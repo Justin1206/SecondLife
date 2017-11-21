@@ -43,6 +43,7 @@ gem 'cancancan'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'fog'
+gem 'fog-aws'
 
 
 #終端機排列
