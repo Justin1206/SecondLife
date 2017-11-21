@@ -1,7 +1,5 @@
-<div  class="col-md-12">
-			
-
-	<div class="col-md-4">
+<div  class="col-md-2"></div>
+<div class="col-md-8">
 
 								<div align="center" class="fh5co-pricing-table">
 									<h3><%= current_user.email %></h3>
@@ -15,12 +13,11 @@
 									<%= link_to '修改密碼', edit_registration_path(:user), class:"btn btn-block btn-sm btn-primary" %>
 								</div>
 	
-	</div>
-
-	<div class="col-md-8">
+</div>
+<div  class="col-md-2"></div>
 
 	
-				<div class="col-md-12">
+				<div class="col-md-12" style="padding-top:30px">
 						
 								<!-- 新增商品 -->
 								<% if current_user.has_role?(:sale) == true %>
@@ -54,8 +51,9 @@
 							</div>  	<!-- col-md-6 -->
 
 
-				<div class="col-md-12">
-						<legend>我想買的物品</legend>
+				<div class="col-md-12" style="padding-top:30px">
+						<h3 style="display:inline">我想買的物品</h3>
+						<hr>
 						<div id="fh5co-board" data-columns>
 								<% @current_user.favorites.each do |favorite| %>		
 										<div class="item">
@@ -81,7 +79,5 @@
 		
 					</div>  	<!-- col-md-6 -->
 
-		</div>
 
 
-	</div>

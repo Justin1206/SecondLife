@@ -1,4 +1,5 @@
 Rails.application.routes.draw do  
+  resources :orders
   devise_for :users
   root to: 'items#index'
 
@@ -8,7 +9,6 @@ Rails.application.routes.draw do
   end
 
   # 訂單
-  resources :orders
   
   # 使用者
   resources :users do

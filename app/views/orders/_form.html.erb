@@ -1,16 +1,32 @@
-<%= form_with(model: @order, local: true)  do |f| %>                    
+<%= form_with(model: order, local: true) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
-<form>
- <p>面交時間</p>
- <div><%= f.text_field :meettime, type: "text", class: "form-control" %></div>
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
- <p>面交地點</p>
- <div><%= f.text_field :meetlocation, type: "text", class: "form-control"%></div>
+  <div class="field">
+    <%= form.label :meettime %>
+    <%= form.text_field :meettime, id: :order_meettime %>
+  </div>
 
- <p>備註：</p>
- <div><%= f.text_area :note, class: "form-control", rows:"2" %></div>
-</form>
+  <div class="field">
+    <%= form.label :meetplace %>
+    <%= form.text_field :meetplace, id: :order_meetplace %>
+  </div>
 
-<%= f.submit '送出', class: "btn btn-lg btn-primary btn-block" %>
+  <div class="field">
+    <%= form.label :note %>
+    <%= form.text_area :note, id: :order_note %>
+  </div>
 
+  <div class="actions">
+    <%= form.submit %>
+  </div>
 <% end %>

@@ -8,7 +8,6 @@
       <table id="myTable" class="table table-sm table-hover dt-responsive" cellspacing="0" width="100%">
         <thead>
           <tr>
-
               <th>信箱</th>
               <th>最後登入</th>
               <th>次數</th>
@@ -21,7 +20,6 @@
         <tbody>
           <% @users.each do |user| %>
             <tr>
-
               <td><%= user.email %></td>
               <td><%= user.last_sign_in_at.to_s(:long_ordinal) %></td>
               <td><%= user.sign_in_count %></td>
