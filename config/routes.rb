@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   resources :items do
     put :favorite, on: :member
   end
-  
 
+  resources :orders
+  
   resources :users do
     collection do
       post :usertosale

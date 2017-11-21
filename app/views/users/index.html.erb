@@ -33,7 +33,7 @@
 												<div class="item" id="item-<%= item.id %>">
 													<%= link_to item, :remote => true do %>		
 													<div class="animate-box">
-														<img src="<%= item.picture %>" alt="" width="100%">
+														<img src="<%= item.picture_url(:thumb) %>" alt="">
 													</div>
 													<% end %>
 															<div class="fh5co-desc">
@@ -61,7 +61,7 @@
 										<div class="item">
 											<%= link_to favorite, :remote => true  do %>		
 											<div class="animate-box">
-												<img src="<%= favorite.picture %>" alt="" width="100%">
+												<img src="<%= favorite.picture_url(:thumb) %>" alt="">
 											</div>
 											<% end %>
 													<div class="fh5co-desc">

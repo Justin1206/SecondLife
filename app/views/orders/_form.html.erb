@@ -1,0 +1,16 @@
+<%= form_with(model: @order, local: true)  do |f| %>                    
+
+<form>
+ <p>面交時間</p>
+ <div><%= f.text_field :meettime, type: "text", class: "form-control" %></div>
+
+ <p>面交地點</p>
+ <div><%= f.text_field :meetlocation, type: "text", class: "form-control"%></div>
+
+ <p>備註：</p>
+ <div><%= f.text_area :note, class: "form-control", rows:"2" %></div>
+</form>
+
+<%= f.submit '送出', class: "btn btn-lg btn-primary btn-block" %>
+
+<% end %>

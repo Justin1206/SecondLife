@@ -3,18 +3,29 @@ class OrdersController < ApplicationController
     skip_authorization_check
 
     def index
+        @order = Order.all.where(buyer_id: current_user)
+    end
+
+    def new
+        @order = Order.new
     end
 
     def create
-        @order = Oorder.get(params[:item_id], params[:buyer_id], params[:seller_id])        
-        @order = Oorder.create(order_params)
-
+        @order = Order.new(order_params)
+        @order.item_id  = @item.id
+        @order.buyer_id = @conversation.sender_id
+        @order.seller_id = @conversation.recipient_id
+    
         respond_to do |format|
-            format.html 
-            format.js # destroy.js.erb
+            if @order.save
+                format.html { redirect_to orders_path, notice: '建立成功' }
+                # format.json { render :show, status: :created, location: @item }
+              else
+                format.html { render :new }
+                format.json { render json: @order.errors, status: :unprocessable_entity }
+              end
         end
     end
-
 
     def destroy
         @order.destroy
@@ -24,7 +35,6 @@ class OrdersController < ApplicationController
         end
     end
 
-
       private
 
       def set_order
@@ -33,6 +43,6 @@ class OrdersController < ApplicationController
   
       # Never trust parameters from the scary internet, only allow the white list through.
       def order_params
-        params.require(:order).permit(:item_id, :buyer_id, :buyer_rating, :seller_id, :seller_rating, :status, :meettime, :meetlocation, :note )
+        params.require(:order).permit( :meettime, :meetlocation, :note )
       end
 end

@@ -42,6 +42,7 @@ gem 'cancancan'
 #圖片上傳
 gem 'carrierwave'
 gem 'rmagick'
+gem 'fog'
 
 
 #終端機排列
