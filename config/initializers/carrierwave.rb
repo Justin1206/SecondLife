@@ -4,14 +4,16 @@
     config.fog_credentials = {
       # Configuration for Amazon S3
       :provider              => 'AWS',
-      :aws_access_key_id     => 'AKIAJC6AJGVZ4GKDWCAA',
-      :aws_secret_access_key => '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',
-      :region                => 'sa-east-1'
+      :aws_access_key_id     => 'AKIAIZMFYVL4WWOCM3UQ',
+      :aws_secret_access_key => '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',
+      :region                => 'us-east-1'
     }
   
     config.cache_dir = "#{Rails.root}/tmp/uploads"
-    config.fog_directory  = 'shucoupon'
-    config.fog_public     = false
+    # config.fog_host = "https://acer1456.s3.amazonaws.com"
+    config.fog_directory  = 'shushop'
+    config.fog_public     = true
     config.fog_attributes = { 'Cache-Control' => "max-age=#{365.day.to_i}" }
-    config.storage = :fog    
+    config.storage = :fog
+    
   end
