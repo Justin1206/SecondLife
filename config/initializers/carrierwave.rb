@@ -10,7 +10,8 @@
     }
   
     config.cache_dir = "#{Rails.root}/tmp/uploads"
+    config.fog_directory  = 'shucoupon'
     config.fog_public     = false
     config.fog_attributes = { 'Cache-Control' => "max-age=#{365.day.to_i}" }
-    config.storage = :fog
+    config.storage = :fog    
   end
