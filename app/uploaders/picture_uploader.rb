@@ -5,10 +5,18 @@ class PictureUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  if Rails.env.production?
-    storage :fog
+  CarrierWave.configure do |config|
+    if Rails.env.production?
+      config.fog_credentials = {
+        :provider               => 'AWS',
+        :aws_access_key_id      => "AKIAJ5BLPQH7G57L72KA",
+        :aws_secret_access_key  => "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",
+        :region                 => 'ap-northeast-1' # Change this for different AWS region. Default is 'us-east-1'
+      }
+      config.fog_directory  = ENV['shucoupon']
     else
-    storage :file
+      config.storage :file
+    end
   end
   # storage :fog
 
