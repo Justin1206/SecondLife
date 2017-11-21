@@ -1,18 +1,17 @@
 
 
-
   CarrierWave.configure do |config|
     config.fog_credentials = {
-      :provider               => 'AWS',       # required
-      :aws_access_key_id      => 'AKIAJC6AJGVZ4GKDWCAA',       # your aws access key id
-      :aws_secret_access_key  => 'TTCcHIYIcyGS/k3Uj9SNL3A/U0MsI5BIXc8epeNt',       # your aws secret access key
-      :region                 => 'sa-east-1'  # your bucket's region in S3, defaults to 'us-east-1'
+      # Configuration for Amazon S3
+      :provider              => 'AWS',
+      :aws_access_key_id     => 'AKIAJC6AJGVZ4GKDWCAA',
+      :aws_secret_access_key => 'TTCcHIYIcyGS/k3Uj9SNL3A/U0MsI5BIXc8epeNt',
+      :region                => 'sa-east-1'
     }
-    # your S3 bucket name
-    # config.fog_directory  = 'shucoupon'
-    # custome your domain on aws S3, defaults to nil
+  
+    config.cache_dir = "#{Rails.root}/tmp/uploads"
     config.fog_directory  = 'shucoupon'
-    # custome your domain on aws S3, defaults to nil
-    config.fog_host       = 'https://shushop.herokuapp.com'
-    config.fog_public     = true  
+    config.fog_public     = false
+    config.fog_attributes = { 'Cache-Control' => "max-age=#{365.day.to_i}" }
+    config.storage = :fog
   end
