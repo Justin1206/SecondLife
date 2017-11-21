@@ -9,6 +9,6 @@
       :region                 => 'sa-east-1'  # your bucket's region in S3, defaults to 'us-east-1'
     }
     # your S3 bucket name
-    config.fog_directory  = 'shucoupon'
+    # config.fog_directory  = 'shucoupon'
     # custome your domain on aws S3, defaults to nil
   end
