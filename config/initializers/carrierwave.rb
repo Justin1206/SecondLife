@@ -4,8 +4,8 @@
     config.fog_credentials = {
       # Configuration for Amazon S3
       :provider              => 'AWS',
-      :aws_access_key_id     => 'AKIAIZMFYVL4WWOCM3UQ',
-      :aws_secret_access_key => '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',
+      :aws_access_key_id     => 'AKIAIUUSV5L6PLH3RWOA',
+      :aws_secret_access_key => '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',
       :region                => 'ap-northeast-1'
     }
   

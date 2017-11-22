@@ -10,17 +10,17 @@
 										<li class="fh5co-include">賣家評價：</li>
 										
 									</ul>
-									<%= link_to '修改密碼', edit_registration_path(:user), class:"btn btn-block btn-sm btn-primary" %>
+									<%= link_to '修改密碼', edit_registration_path(:user), class:"btn btn-block btn-sm btn-info" %><br>
+									<%= button_to '我要當賣家', usertosale_users_path, class: "btn btn-block btn-primary btn-sm", method: :post %>									
 								</div>
 	
 </div>
 <div  class="col-md-2"></div>
 
-	
 				<div class="col-md-12" style="padding-top:30px">
-						
+						<% if current_user.has_role?(:sale) == true %>
+							<% if current_user.item.count > 0 %>
 								<!-- 新增商品 -->
-								<% if current_user.has_role?(:sale) == true %>
 								<h3 style="display:inline">我的商品</h3>
 								<%= link_to '新增商品', new_item_path, class: "btn btn-success btn-sm",  style: "float:right" %>	
 								<hr>
@@ -43,15 +43,15 @@
 												</div>
 										<% end %>
 								</div>
+									<% end %>
 								<% else %>
-								<%= button_to '我要當賣家', usertosale_users_path, class: "btn btn-primary btn-lg", method: :post %>
-								<hr>
 								<% end %>
 						
 							</div>  	<!-- col-md-6 -->
 
-
 				<div class="col-md-12" style="padding-top:30px">
+						<% if current_user.wlists.count > 0 %>
+						
 						<h3 style="display:inline">我想買的物品</h3>
 						<hr>
 						<div id="fh5co-board" data-columns>
@@ -78,6 +78,8 @@
 		
 		
 					</div>  	<!-- col-md-6 -->
+					<% else %>
+					<% end %>
 
 
 

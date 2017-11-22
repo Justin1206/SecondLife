@@ -1,10 +1,10 @@
 <% if current_user.favorites.include?(item) %>
     <%= link_to  favorite_item_path(item, type: "unfavorite"), method: :put , remote: true, style:"display:inline" do %>
-    <span class="glyphicon glyphicon-heart" style="font-size: 20px;"></span>
+    <span class="glyphicon glyphicon-heart" style="font-size: 15px; letter-spacing: 5px;"><span style="font-size: 17px;"><%= item.wlists.count.to_s %></span></span>
     <% end %>
     
 <% else %>
     <%= link_to  favorite_item_path(item, type: "favorite"), method: :put , remote: true, style:"display:inline"  do %>
-    <span class="glyphicon glyphicon-heart-empty" style="font-size: 20px;"></span>
+    <span class="glyphicon glyphicon-heart-empty" style="font-size: 15px; letter-spacing: 5px;"><span style="font-size: 17px;"><%= item.wlists.count.to_s %></span></span>
     <% end %>    
 <% end %>

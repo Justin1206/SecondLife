@@ -47,6 +47,9 @@ ActiveRecord::Schema.define(version: 20171121115057) do
     t.string "meettime"
     t.string "meetplace"
     t.text "note"
+    t.integer "item_id"
+    t.integer "seller_id"
+    t.integer "buyer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
