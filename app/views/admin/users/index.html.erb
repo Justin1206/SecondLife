@@ -14,7 +14,7 @@
               <th>最後ip</th>
               <th>註冊於</th>
               <th>管理員</th>
-              <th></th>
+              <th>權限處理</th>
           </tr>
         </thead>
         <tbody>
@@ -25,7 +25,29 @@
               <td><%= user.sign_in_count %></td>
               <td><%= user.last_sign_in_ip %></td>
               <td><%= user.created_at.to_s(:long_ordinal) %></td>
-              <td></td>
+              <% if user.has_role? :admin %>
+                <td style="color:green">管理員</td>
+              <% elsif user.has_role? :sale %>
+                <td style="color:green">賣家</td>
+              <% else %>
+                <td style="color:green">使用者</td>
+              <% end %>
+              <% if current_user %>
+                <td>自己</td>
+              <% else %>
+              <td>
+                  <% if user.has_role? :sale %>
+                  <%= link_to '移除sale', nottosale_admin_user_path(user), method: :post, class: "btn btn-success btn-sm"%>
+                  <% else %>
+                  <%= link_to '加入sale', nottosale_admin_user_path(user), method: :post, class: "btn btn-success btn-sm" %>
+                  <% end %>
+                  <% if user.has_role? :admin %>
+                  <%= link_to '移除admin', nottosale_admin_user_path(user), method: :post, class: "btn btn-primary btn-sm" %>
+                  <% else %>
+                  <%= link_to '加入admin', nottosale_admin_user_path(user), method: :post, class: "btn btn-primary btn-sm" %>
+                  <% end %>
+                </td>
+              <% end %>
             </tr>
               <% end %>
         </tbody>

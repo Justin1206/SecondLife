@@ -9,11 +9,25 @@ class Admin::UsersController < AdminController
     end
   
     #我要當賣家
-    def usertosale
+    def tosale
       current_user.add_role :sale
-      redirect_to users_path
+      redirect_to admin_users_path
     end
 
+    def nottosale
+      current_user.remove_role :sale      
+      redirect_to admin_users_path
+    end
+
+    def toadmin
+      current_user.add_role :admin
+      redirect_to admin_users_path
+    end
+
+    def nottoadmin
+      current_user.remove_role :admin      
+      redirect_to admin_users_path
+    end
     
     # GET /users/1
     # GET /users/1.json

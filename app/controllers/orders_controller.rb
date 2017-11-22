@@ -6,13 +6,14 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @buyorders = Order.where(buyller_id: current_user) #待確認訂單
+    @sellorders = Order.where(seller_id: current_user) #待確認訂單
   end
 
   # GET /orders/1
   # GET /orders/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /orders/new
   def new
@@ -30,8 +31,8 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
+        format.html { redirect_to orders_path, notice: '成功建立訂單' }
+        # format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -41,24 +42,24 @@ class OrdersController < ApplicationController
 
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
-  def update
-    respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { render :show, status: :ok, location: @order }
-      else
-        format.html { render :edit }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @order.update(order_params)
+  #       format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @order }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @order.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to orders_url, notice: '訂單已刪除' }
       format.json { head :no_content }
     end
   end
@@ -71,6 +72,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:meettime, :meetplace, :note)
+      params.require(:order).permit(:conversation_id, :buyller_id, :seller_id, :item_id, :meettime, :meetplace, :note, :status)
     end
 end

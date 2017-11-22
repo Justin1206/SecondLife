@@ -1,5 +1,4 @@
 Rails.application.routes.draw do  
-  resources :orders
   devise_for :users
   root to: 'items#index'
 
@@ -8,12 +7,23 @@ Rails.application.routes.draw do
     put :favorite, on: :member
   end
 
-  # 訂單
+
   
   # 使用者
   resources :users do
     collection do
       post :usertosale
+      get :userfavorite
+      get :useritem
+    end
+  end
+
+
+
+  # 訂單
+  resources :orders do
+    collection do
+      post :addtoorder
     end
   end
 
@@ -27,8 +37,20 @@ Rails.application.routes.draw do
 
   # 後台管理
   namespace :admin do
-    resources :items
-    resources :users
+      resources :items do
+        member do        
+          post  :publish
+          post  :hide
+        end
+      end
+      resources :users do
+        member do
+          post :nottosale
+          post :nottoadmin
+          post :tosale
+          post :toadmin
+        end
+      end
   end
   
 

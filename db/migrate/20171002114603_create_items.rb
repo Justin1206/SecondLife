@@ -8,6 +8,7 @@ class CreateItems < ActiveRecord::Migration[5.1]
       t.integer :price
       t.string :picture
       t.string :category
+      t.boolean :status
 
       t.timestamps
     end

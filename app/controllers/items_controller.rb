@@ -26,7 +26,10 @@ class ItemsController < ApplicationController
       # @conversations = Conversation.all.where(id: @items.ids)
       # @conversations = Conversation.includes(:recipient, :messages).find(session[:conversations])
     else
-      @items = Item.all
+      # @items = Item.full_joins(:orders).where.not(orders: {status: 2} )
+      # @items = Item.joins('LEFT OUTER JOIN "orders"').where(orders: {status: 2} )
+      # @items = Order.joins("LEFT JOIN items ON items.id = orders.item_id ").where.not(orders: {status: 2} )
+      @items = Item.all.where(status: true) 
     end 
 
 

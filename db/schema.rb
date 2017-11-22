@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121115057) do
+ActiveRecord::Schema.define(version: 20171122153705) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer "recipient_id"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20171121115057) do
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "status"
+    t.boolean "status"
     t.integer "amount"
     t.integer "price"
     t.string "picture"
@@ -44,14 +44,18 @@ ActiveRecord::Schema.define(version: 20171121115057) do
   end
 
   create_table "orders", force: :cascade do |t|
+    t.integer "conversation_id"
+    t.integer "buyller_id"
+    t.integer "seller_id"
+    t.integer "item_id"
     t.string "meettime"
     t.string "meetplace"
     t.text "note"
-    t.integer "item_id"
-    t.integer "seller_id"
-    t.integer "buyer_id"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_orders_on_conversation_id"
+    t.index ["item_id"], name: "index_orders_on_item_id"
   end
 
   create_table "roles", force: :cascade do |t|

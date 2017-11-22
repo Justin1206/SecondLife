@@ -55,6 +55,7 @@
 <div class="row">
 			<div id="fh5co-board" data-columns>
 					<% @items.each do |item| %>
+			
 					
 							<div class="item">
 								<%= link_to item, :remote => true, data: {toggle: "modal", target: "#myModal"} do %>		
@@ -82,7 +83,6 @@
 											</div>
 										</div>
 							</div>
-
 					<% end %>
 			</div>
 </div>

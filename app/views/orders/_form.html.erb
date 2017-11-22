@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.css" />
+
 <%= form_with(model: order, local: true) do |form| %>
   <% if order.errors.any? %>
     <div id="error_explanation">
@@ -10,23 +12,42 @@
       </ul>
     </div>
   <% end %>
+      
+    <%= form.text_field :conversation_id, id: :order_conversation_id, type: :hidden, value: params[:conversation_id] %>
+    <%= form.number_field :buyller_id, id: :order_buyller_id, type: :hidden, value: params[:buyller_id]  %>
+    <%= form.number_field :seller_id, id: :order_seller_id, type: :hidden, value: params[:seller_id]   %>
+    <%= form.number_field :item_id, id: :order_item_id, type: :hidden, value: params[:item_id]   %>
+    <%= form.number_field :status, id: :order_status, type: :hidden, value: '0'   %>
 
-  <div class="field">
-    <%= form.label :meettime %>
-    <%= form.text_field :meettime, id: :order_meettime %>
+  <div class="form-group">
+    <%= form.label :約定時間 %>
+    <%= form.text_field :meettime, id: :datetimepicker1, :class => 'form-control'  %>
   </div>
 
-  <div class="field">
-    <%= form.label :meetplace %>
-    <%= form.text_field :meetplace, id: :order_meetplace %>
+  <div class="form-group">
+    <%= form.label :面交地點 %>
+    <%= form.text_field :meetplace, id: :order_meetplace, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :note %>
-    <%= form.text_area :note, id: :order_note %>
+  <div class="form-group">
+    <%= form.label :備註 %>
+    <%= form.text_area :note, id: :order_note, :class => 'form-control' , row:"1" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit "新增訂單" , class: "btn btn-primary btn-sm" %>
   </div>
 <% end %>
+
+
+<script type="text/javascript">
+  $(function () {
+      $('#datetimepicker1').datetimepicker();
+  });
+</script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/locale/zh-tw.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>

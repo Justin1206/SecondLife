@@ -28,7 +28,18 @@ class Admin::ItemsController < ApplicationController
       @items = Item.all
     end 
 
+  end
 
+  def publish
+    @item.status = true
+    @item.save
+    redirect_to admin_items_path
+  end
+
+  def hide
+    @item.status = false
+    @item.save
+    redirect_to admin_items_path
   end
 
   # GET /items/1

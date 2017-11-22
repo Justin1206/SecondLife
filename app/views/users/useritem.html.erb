@@ -1,0 +1,34 @@
+
+<div class="col-md-2">
+        
+                <%= render partial: 'users/userpanel' %>	
+                
+        </div>
+        
+        
+<div class="col-md-10"><!-- 新增商品 -->
+									<% if current_user.has_role?(:sale) || current_user.has_role?(:admin) == true %>
+									<h3 style="display:inline">我的商品</h3>
+									<hr>
+									<!-- 我的商品 -->	
+									<div id="fh5co-board" data-columns>
+											<% @current_user.item.each do |item| %>				
+													<div class="item" id="item-<%= item.id %>">
+														<%= link_to item, :remote => true do %>		
+														<div class="animate-box">
+															<img src="<%= item.picture_url(:thumb) %>" alt="">
+														</div>
+														<% end %>
+																<div class="fh5co-desc">
+																	<h6><%= truncate(item.name, length:10) %></h6>
+																	<h6><%= item.price %>元</h6>
+																	<!-- <%= truncate(item.description, length:15) %><br> -->
+																	<%= link_to '修改', edit_item_url(item) , class: "btn btn-info btn-sm",  style:"width:100%" %>
+																	<%= link_to '刪除', item_path(item), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: 'Are you sure?' },  :remote => true, style:"width:100%" %>										
+																</div>
+													</div>
+											<% end %>
+									</div>
+									<% else %>
+                                    <% end %>
+  </div>

@@ -1,26 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-2">
+    
+            <%= render partial: 'users/userpanel' %>	
+            
+    </div>
+    
+    
+<div class="col-md-10">
 
-<h1>Orders</h1>
+<h1>您在賣的訂單</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Meettime</th>
-      <th>Meetplace</th>
-      <th>Note</th>
+      <th>買家</th>
+      <th>物品</th>
+      <th>交易時間</th>
+      <th>面交地點</th>
+      <th>備註</th>
+      <th>狀態</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @orders.each do |order| %>
+    <% @sellorders.each do |order| %>
       <tr>
+        <td><%= order.buyller.email %></td>
+        <td><%= order.item.name %></td>
         <td><%= order.meettime %></td>
         <td><%= order.meetplace %></td>
         <td><%= order.note %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if order.status == 0%>
+        <td style="color:green">待確認</td>
+        <% end %>
+        <td><%= link_to '取消訂單', order_path(order), method: :delete, class: "btn btn-primary btn-sm", data: { confirm: 'Are you sure?' } %></td>        
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +41,35 @@
 
 <br>
 
-<%= link_to 'New Order', new_order_path %>
+<h1>您在買的訂單</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>賣家</th>
+      <th>物品</th>
+      <th>交易時間</th>
+      <th>面交地點</th>
+      <th>備註</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @buyorders.each do |order| %>
+      <tr>
+        <td><%= order.seller.email %></td>
+        <td><%= order.item.name %></td>
+        <td><%= order.meettime %></td>
+        <td><%= order.meetplace %></td>
+        <td><%= order.note %></td>
+        <% if order.status == 0%>
+        <td style="color:green">待確認</td>
+        <% end %>
+        <td><%= link_to '取消訂單', order_path(order), method: :delete, class: "btn btn-primary btn-sm", data: { confirm: 'Are you sure?' } %></td>        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

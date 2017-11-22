@@ -1,0 +1,2 @@
+$('#myModal').html("<%= escape_javascript(render :partial => 'addorder', :locals => { :order => @order }) %>");
+$('#myModal').modal('show');

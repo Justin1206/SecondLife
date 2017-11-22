@@ -1,85 +1,32 @@
-<div  class="col-md-2"></div>
-<div class="col-md-8">
 
-								<div align="center" class="fh5co-pricing-table">
-									<h3><%= current_user.email %></h3>
-									<ul class="fh5co-list-check">
-										<li class="fh5co-include">最後登入：<%= current_user.last_sign_in_at %></li>
-										<li class="fh5co-include">登入次數：<%= current_user.sign_in_count %></li>
-										<li class="fh5co-include">買家評價：</li>
-										<li class="fh5co-include">賣家評價：</li>
-										
-									</ul>
-									<%= link_to '修改密碼', edit_registration_path(:user), class:"btn btn-block btn-sm btn-info" %><br>
-									<%= button_to '我要當賣家', usertosale_users_path, class: "btn btn-block btn-primary btn-sm", method: :post %>									
-								</div>
-	
+<div class="col-md-2">
+
+		<%= render partial: 'users/userpanel' %>	
+		
 </div>
-<div  class="col-md-2"></div>
 
-				<div class="col-md-12" style="padding-top:30px">
-						<% if current_user.has_role?(:sale) == true %>
-							<% if current_user.item.count > 0 %>
-								<!-- 新增商品 -->
-								<h3 style="display:inline">我的商品</h3>
-								<%= link_to '新增商品', new_item_path, class: "btn btn-success btn-sm",  style: "float:right" %>	
-								<hr>
-								<!-- 我的商品 -->	
-								<div id="fh5co-board" data-columns>
-										<% @current_user.item.each do |item| %>				
-												<div class="item" id="item-<%= item.id %>">
-													<%= link_to item, :remote => true do %>		
-													<div class="animate-box">
-														<img src="<%= item.picture_url(:thumb) %>" alt="">
-													</div>
-													<% end %>
-															<div class="fh5co-desc">
-																<h6><%= truncate(item.name, length:10) %></h6>
-																<h6><%= item.price %>元</h6>
-																<!-- <%= truncate(item.description, length:15) %><br> -->
-																<%= link_to '修改', edit_item_url(item) , class: "btn btn-info btn-sm",  style:"width:100%" %>
-																<%= link_to '刪除', item_path(item), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: 'Are you sure?' },  :remote => true, style:"width:100%" %>										
-															</div>
-												</div>
-										<% end %>
-								</div>
-									<% end %>
-								<% else %>
-								<% end %>
-						
-							</div>  	<!-- col-md-6 -->
 
-				<div class="col-md-12" style="padding-top:30px">
-						<% if current_user.wlists.count > 0 %>
-						
-						<h3 style="display:inline">我想買的物品</h3>
-						<hr>
-						<div id="fh5co-board" data-columns>
-								<% @current_user.favorites.each do |favorite| %>		
-										<div class="item">
-											<%= link_to favorite, :remote => true  do %>		
-											<div class="animate-box">
-												<img src="<%= favorite.picture_url(:thumb) %>" alt="">
-											</div>
-											<% end %>
-													<div class="fh5co-desc">
-														<h6><%= favorite.name %></h6>
-														<h6><%= favorite.price %>元</h6>
-														<!-- <%= truncate(favorite.description, length:15) %><br> -->
-														<div id="favorite-<%= favorite.id %>">
-																<%= render partial: 'items/favorite', :locals => { :item => favorite, :wlist => @wlists } %>	
-														</div>
-														<%= link_to '聊聊', conversations_path(recipient_id: favorite.user_id, sender_id: current_user.id, item_id: favorite.id), method: :post, class: "btn btn-outline btn-sm", style:"width:100%" %>
-													</div>
-										</div>
-								<% end %>
+<div class="col-md-10">
+
+					<div align="center" class="fh5co-pricing-table">
+							<h3><%= current_user.email %></h3>
+							<ul class="fh5co-list-check">
+								<li class="fh5co-include">最後登入：<%= current_user.last_sign_in_at %></li>
+								<li class="fh5co-include">登入次數：<%= current_user.sign_in_count %></li>
+								<li class="fh5co-include">買家評價：</li>
+								<li class="fh5co-include">賣家評價：</li>
+								
+							</ul>
+							<%= link_to '修改密碼', edit_registration_path(:user), class:"btn btn-block btn-sm btn-info" %><br>
+							<% if current_user.has_role?(:sale) %>
+							<%= link_to '新增商品', new_item_path, class: "btn btn btn-block btn-success btn-sm"%>	
+							<% else %>
+							<%= button_to '我要當賣家', usertosale_users_path, class: "btn btn-block btn-primary btn-sm", method: :post %>	
+							<% end %>									
 						</div>
-		
-		
-		
-					</div>  	<!-- col-md-6 -->
-					<% else %>
-					<% end %>
 
 
+</div>
 
+
+	

@@ -7,6 +7,7 @@ class Ability
       basic_read_only
     elsif user.has_role?(:admin) #如果 role 為 admin
       can :manage, :all #可管理所有資源
+      can :admin, :all
     elsif user.has_role?(:sale)
       can :manage, Item, user_id: user.id
       can :manage, User, user_id: user.id

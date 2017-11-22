@@ -1,0 +1,41 @@
+
+<div class="col-md-2">
+        
+                <%= render partial: 'users/userpanel' %>	
+                
+        </div>
+        
+        
+<div class="col-md-10">
+        
+					<% if current_user.wlists.count > 0 %>
+					
+					<h3 style="display:inline">我想買的物品</h3>
+					<hr>
+					<div id="fh5co-board" data-columns>
+							<% @current_user.favorites.each do |favorite| %>		
+									<div class="item">
+										<%= link_to favorite, :remote => true  do %>		
+										<div class="animate-box">
+											<img src="<%= favorite.picture_url(:thumb) %>" alt="">
+										</div>
+										<% end %>
+												<div class="fh5co-desc">
+													<h6><%= favorite.name %></h6>
+													<h6><%= favorite.price %>元</h6>
+													<!-- <%= truncate(favorite.description, length:15) %><br> -->
+													<div id="favorite-<%= favorite.id %>">
+															<%= render partial: 'items/favorite', :locals => { :item => favorite, :wlist => @wlists } %>	
+													</div>
+													<%= link_to '聊聊', conversations_path(recipient_id: favorite.user_id, sender_id: current_user.id, item_id: favorite.id), method: :post, class: "btn btn-outline btn-sm", style:"width:100%" %>
+												</div>
+									</div>
+							<% end %>
+					</div>
+	
+				</div>  	<!-- col-md-6 -->
+				<% else %>
+				<h4>暫無資料</h4>
+				<% end %>
+
+</div>
